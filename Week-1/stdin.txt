@@ -1,6 +1,4 @@
-Rump Rumpelstiltskin
-rump Rumpelstiltskin
-stilt Rumpelstiltskin
-stiLT Rumpelstiltskin
-pest Rumpelstiltskin
-up Rumpelstiltskin
+c cat
+AC cat
+tac caT
+ttac cat
