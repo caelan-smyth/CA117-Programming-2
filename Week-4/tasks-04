@@ -1,0 +1,294 @@
+
+Contact list
+
+    Write a program called contacts_short_041.py that takes a file of contacts as a single command line argument. Each line of the contacts file consists of a name and phone number. Your program must read each contact and store it in a dictionary. The dictionary’s keys are names and the dictionary’s values are the corresponding phone numbers. Once the dictionary has been constructed the program should read all lines from stdin. Each line consists of a single name. For each name the program should retrieve and print the corresponding phone number. If a name cannot be mapped to a phone number the program should print No such contact. For example, after constructing a dictionary from contacts_short_041.txt your program should produce the output below when reading from names_041.txt:
+
+    $ cat contacts_short_041.txt
+    Sue 085-6442378
+    Jimmy 086-1223277
+    Maggie 087-8822001
+    Amy 087-3240516
+    Wendy 086-9112645
+    Sean 085-3445123
+
+    $ cat names_041.txt
+    Jimmy
+    Sue
+    Sean
+    Gwen
+    Wendy
+    Tommy
+    Maggie
+    Amy
+
+    $ python3 contacts_short_041.py contacts_short_041.txt < names_041.txt
+    Name: Jimmy
+    Phone: 086-1223277
+    Name: Sue
+    Phone: 085-6442378
+    Name: Sean
+    Phone: 085-3445123
+    Name: Gwen
+    No such contact
+    Name: Wendy
+    Phone: 086-9112645
+    Name: Tommy
+    No such contact
+    Name: Maggie
+    Phone: 087-8822001
+    Name: Amy
+    Phone: 087-3240516
+
+Fancy contact list
+
+    Write a new version of the above program called contacts_long_041.py. It functions similarly except contact details consist of two items: a phone number and an email address. For example, after constructing a dictionary from contacts_long_041.txt your program should produce the output below when reading from names_041.txt:
+
+    $ cat contacts_long_041.txt
+    Sue 085-6442378 sue@eircom.net
+    Jimmy 086-1223277 james@apple.com
+    Maggie 087-8822001 maggie@microsoft.com
+    Amy 087-3240516 amy@rte.ie
+    Wendy 086-9112645 wendy@physics.dcu.ie
+    Sean 085-3445123 sean@tcd.ie
+
+    $ cat names_041.txt
+    Jimmy
+    Sue
+    Sean
+    Gwen
+    Wendy
+    Tommy
+    Maggie
+    Amy
+
+    $ python3 contacts_long_041.py contacts_long_041.txt < names_041.txt
+    Name: Jimmy
+    Phone: 086-1223277
+    Email: james@apple.com
+    Name: Sue
+    Phone: 085-6442378
+    Email: sue@eircom.net
+    Name: Sean
+    Phone: 085-3445123
+    Email: sean@tcd.ie
+    Name: Gwen
+    No such contact
+    Name: Wendy
+    Phone: 086-9112645
+    Email: wendy@physics.dcu.ie
+    Name: Tommy
+    No such contact
+    Name: Maggie
+    Phone: 087-8822001
+    Email: maggie@microsoft.com
+    Name: Amy
+    Phone: 087-3240516
+    Email: amy@rte.ie
+
+From lists to dictionaries
+
+    Write a module called l2d_041.py that defines a function called l2d(). The function expects a single argument to be passed to it: an open file. The function reads two lines of text from the file. The first line is a sequence of keys (each key is a string). The second line is a corresponding sequence of values (each value is an integer). The function must return a dictionary that maps from keys (strings) to corresponding values (integers). For example:
+
+    $ cat stdin.txt
+    dogs cats ponies giraffes
+    4 9 1 0
+
+    $ cat l2d_demo_041.py
+    import sys
+    from 041_l2d import l2d
+
+    def main():
+        d = l2d(sys.stdin)
+        for (k, v) in sorted(d.items()):
+            print('{} : {}'.format(k, v))
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 l2d_demo_041.py < stdin.txt
+    cats : 9
+    dogs : 4
+    giraffes : 0
+    ponies : 1
+
+Word frequencies
+
+    Write a program called words_041.py that counts the frequency of words in lines of text read from stdin. Your program must store the totals as values in a dictionary where the corresponding words are the keys. Once totals have been calculated the program should print all words in alphabetical order along with corresponding totals. For example:
+
+    $ cat text_041.txt
+    This is a test. And a test is this.
+    How many tests are required to prove something?
+    I wonder if there is something wrong with my code...?
+    I shouldn't worry. I'll sort it in the end.
+
+    $ python3 words_041.py < text_041.txt
+    a : 2
+    and : 1
+    are : 1
+    code : 1
+    end : 1
+    how : 1
+    i : 2
+    i'll : 1
+    if : 1
+    in : 1
+    is : 3
+    it : 1
+    many : 1
+    my : 1
+    prove : 1
+    required : 1
+    shouldn't : 1
+    something : 2
+    sort : 1
+    test : 2
+    tests : 1
+    the : 1
+    there : 1
+    this : 2
+    to : 1
+    with : 1
+    wonder : 1
+    worry : 1
+    wrong : 1
+
+    Hints:
+        Convert all words to lower case. 'A' and 'a' should not be counted as separate words.
+        Remember to strip any surrounding punctuation from words. You may find string.punctuation useful for this task.
+        Use the sorted() function for sorting.
+
+Main word frequencies
+
+    Write a new version of the above program that only prints a frequency count for words that are longer than three characters and whose frequency is at least three. Call the new program main_words_041.py. When run against gettysburg.txt your program should produce the following output (again the output must be sorted):
+
+    $ python3 main_words_041.py < gettysburg.txt
+         dead :  3
+    dedicated :  4
+        great :  3
+         have :  5
+         here :  8
+       nation :  5
+       people :  3
+        shall :  3
+         that : 13
+         they :  3
+         this :  4
+
+    Hints:
+        Note how the output must be neatly tabulated. Remember that to print a string to a given width you can use something like: print('{:>{:d}s}'.format(some_string, desired_width)).
+        Note how the output must be neatly tabulated. Remember that to print an integer to a given width you can use something like: print('{:{:d}d}'.format(some_integer, desired_width)).
+
+Vowel frequencies
+
+    Write a program called vowels_041.py that prints a frequency count of each of the vowels a, e, i, o, u in lines of text read from stdin. Your program must store the totals as values in a dictionary where the corresponding vowels are the keys. When run against gettysburg.txt your program should produce the following output (note the output must be neatly tabulated and values must be displayed in decreasing order):
+
+    $ python3 vowels_041.py < gettysburg.txt
+    e : 167
+    a : 105
+    o :  95
+    i :  69
+    u :  21
+
+    Hints:
+        Convert all words to lower case. 'A' and 'a' should not be counted as separate vowels.
+        Printing the dictionary items in order of decreasing values is tricky. You will most likely have to study the documentation for the sorted() function.
+        Note how the output must be neatly tabulated. Remember that to print an integer to a given width you can use something like: print('{:{:d}d}'.format(some_integer, desired_width)).
+
+Numbers to words
+
+    Write a Python program called nums2words_v1_042.py that maps lines of numbers to corresponding lines of text. The lines of numbers are read from stdin. You can assume that everything read from stdin is a number and that number is in the range 0-10. For example:
+
+    $ cat stdin.txt
+    5 1 2 0 6 7 9 10 8 8 3 4
+    4 3 9 8 2 6 3 0  7 7 1 9
+
+    $ python3 nums2words_v1_042.py < stdin.txt
+    five one two zero six seven nine ten eight eight three four
+    four three nine eight two six three zero seven seven one nine
+
+Numbers to words (with unknowns)
+
+    Write a Python program called nums2words_v2_042.py that maps lines of numbers to corresponding lines of text. The lines of numbers are read from stdin.
+
+    This time the data read from stdin can be anything. Every number in the range 0-10 should be mapped to corresponding text. Everything else however should be mapped to 'unknown'. For example:
+
+    $ cat stdin.txt
+    5 1 2 b 6 7 99 10 8 8 3 4
+    4 3 9 8 2 6 3 0 x 7 1 9 11
+
+    $ python3 nums2words_v2_042.py < stdin.txt
+    five one two unknown six seven unknown ten eight eight three four
+    four three nine eight two six three zero unknown seven one nine unknown
+
+Numbers to words (with translation)
+
+    Write a Python program called nums2words_v3_042.py that maps lines of numbers to corresponding lines of text. The lines of numbers are read from stdin. You can assume that everything read from stdin is a number and that number is in the range 0-10.
+
+    The program takes as an argument a file that contains a mapping from English words to their translation. Your program must make appropriate use of this mapping.
+
+    Here is an example:
+
+    $ cat mapping_042.txt
+    zero naid
+    one aon
+    two do
+    three tri
+    four ceathar
+    five cuig
+    six se
+    seven seacht
+    eight ocht
+    nine naoi
+    ten deich
+
+    $ cat stdin.txt
+    5 1 2 0 6 7 9 10 8 8 3 4
+    4 3 9 8 2 6 3 0  7 7 1 9
+
+    $ python3 nums2words_v3_042.py mapping_042.txt < stdin.txt
+    cuig aon do naid se seacht naoi deich ocht ocht tri ceathar
+    ceathar tri naoi ocht do se tri naid seacht seacht aon naoi
+
+More numbers to words
+
+    Write a Python program called nums2words_v4_042.py that maps lines of numbers to corresponding lines of text. The lines of numbers are read from stdin. You can assume that everything read from stdin is a number and that number is in the range 0-100. For example:
+
+    $ cat stdin.txt
+    5 11 22 0 66 17 99 100 18 68 73 44
+    4 35 91 83 27 66 30 0 71 17 16 91
+
+    $ python3 nums2words_v4_042.py < stdin.txt
+    five eleven twenty-two zero sixty-six seventeen ninety-nine one hundred eighteen sixty-eight seventy-three forty-four
+    four thirty-five ninety-one eighty-three twenty-seven sixty-six thirty zero seventy-one seventeen sixteen ninety-one
+
+Swapping dictionary keys and values
+
+    Write a Python module swap_v1_042.py that defines a function called swap_keys_values(). The function accepts a single argument: a dictionary d. The function must return a new dictionary whose keys are the values in d and whose values are the corresponding keys in d. For example:
+
+    >>> import swap_v1_042 as swap
+    >>> my_dict = {'a' : 4, 'b' : 7, 'c' : 10}
+    >>> new_dict = swap.swap_keys_values(my_dict)
+    >>> my_dict.items()
+    dict_items([('a', 4), ('b', 7), ('c', 10)])
+    >>> new_dict.items()
+    dict_items([(10, 'c'), (4, 'a'), (7, 'b')])
+    >>> my_dict['a']
+    4
+    >>> new_dict[4]
+    'a'
+
+    You may assume that all values in d are unique and immutable.
+
+Swapping more dictionary keys and values
+
+    Write a new Python module called swap_v2_042.py that defines a function called swap_unique_keys_values(). The function accepts a single argument: a dictionary d. The function must return a new dictionary whose keys are the unique values in d and whose values are the corresponding keys in d. For example:
+
+    >>> import swap_v2_042 as swap
+    >>> my_dict = {'a' : 4, 'b' : 7, 'c' : 10, 'd' : 7}
+    >>> new_dict = swap.swap_unique_keys_values(my_dict)
+    >>> my_dict.items()
+    dict_items([('a', 4), ('b', 7), ('c', 10), ('d', 7)])
+    >>> new_dict.items()
+    dict_items([(10, 'c'), (4, 'a')])
+
+    You may assume all values in d are immutable. There may however be duplicate values. Since values are to become keys this presents a problem: we cannot have duplicate keys. Our solution is to simply ignore duplicate values: they will not be used as keys.

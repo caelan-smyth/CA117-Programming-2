@@ -1,0 +1,371 @@
+
+Element
+
+    In element_071.py define an Element class to model a chemical element. An element has four data attributes: number, name, symbol, and boiling_point. In addition to an __init__() method the Element class defines the following instance method:
+        print_details() : prints element details (see example output below for how element details should be displayed)
+
+    When your class is correctly implemented, running the following program should produce the given output:
+
+    from element_071 import Element
+
+    def main():
+
+        e1 = Element(1, 'Hydrogen', 'H', 20.3)
+        e2 = Element(3, 'Lithium', 'Li', 1615)
+        e3 = Element(11, 'Sodium', 'Na', 1156)
+        e4 = Element(12, 'Magnesium', 'Mg', 1380)
+        e5 = Element(79, 'Gold', 'Au', 3129)
+
+        e1.print_details()
+        e2.print_details()
+        e3.print_details()
+        e4.print_details()
+        e5.print_details()
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 element_demo_071.py
+    Number: 1
+    Name: Hydrogen
+    Symbol: H
+    Boiling point: 20.3 K
+    Number: 3
+    Name: Lithium
+    Symbol: Li
+    Boiling point: 1615 K
+    Number: 11
+    Name: Sodium
+    Symbol: Na
+    Boiling point: 1156 K
+    Number: 12
+    Name: Magnesium
+    Symbol: Mg
+    Boiling point: 1380 K
+    Number: 79
+    Name: Gold
+    Symbol: Au
+    Boiling point: 3129 K
+
+Student
+
+    In student_071.py define a Student class to model a student. A student has four data attributes: sid (student ID), surname, forename and modlist (the list of modules for which the student is registered). For any new Student instance modlist is empty by default. In addition to an __init__() method the Student class defines the following instance methods:
+        add_module() : adds a module (passed as an argument) to modlist (has no effect if modlist already contains the module)
+        del_module() : removes a module (passed as an argument) from modlist (has no effect if the module is not in modlist)
+        print_details() : prints student details (see example output below for how student details should be displayed)
+
+    When your class is correctly implemented, running the following program should produce the given output:
+
+    from student_071 import Student
+
+    def main():
+
+        student1 = Student('Murphy', 'Jimmy', 15234654)
+        student1.add_module('CA117')
+        student1.add_module('CA116')
+        student1.add_module('CA114')
+        student1.print_details()
+        
+        student2 = Student('Lannister', 'Cersei', 15876123, ['CA115', 'CA216'])
+        student2.del_module('CA216')
+        student2.del_module('CA117')
+        student2.del_module('CA216')
+        student2.add_module('CA117')
+        student2.print_details()
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 student_demo_071.py
+    ID: 15234654
+    Surname: Murphy
+    Forename: Jimmy
+    Modules: CA117 CA116 CA114
+    ID: 15876123
+    Surname: Lannister
+    Forename: Cersei
+    Modules: CA115 CA117
+
+Point
+
+    In point_071.py define a Point class to model a point in a two dimensional space. A point has two data attributes: x and y. For any new Point instance x and y default to zero. In addition to an __init__() method the Point class defines the following instance methods:
+        reflect() : reflects a point’s coordinates through the origin (the effect is to simply negate the point’s x and y coordinates)
+        distance() : returns the distance between two points (the second point is passed as an argument to the method)
+
+    When your class is correctly implemented, running the following program should produce the given output:
+
+    from point_071 import Point
+
+    def main():
+        p1 = Point()
+        p2 = Point(3,0)
+        print('{:.1f}'.format(p1.distance(p2)))
+        print('{:.1f}'.format(p2.distance(p1)))
+        p3 = Point(3,0)
+        p3.reflect()
+        print('{:.1f}'.format(p3.distance(p2)))
+        p4 = Point(1,1)
+        print('{:.1f}'.format(p4.distance(p1)))
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 point_demo_071.py
+    3.0
+    3.0
+    6.0
+    1.4
+
+GAA score
+
+    In gaa_071.py define a Score class to model a GAA score. A score has two data attributes: goals and points. For any new Score instance goals and points default to zero. One goal is equivalent to three points. In addition to an __init__() method the Score class defines the following instance methods:
+        greater_than() : returns True if one score is greater than another and False otherwise
+        less_than() : returns True if one score is less than another and False otherwise
+        equal_to : returns True if one score is equal to another and False otherwise
+
+    When your class is correctly implemented, running the following program should produce the given output:
+
+    from gaa_071 import Score
+
+    def main():
+
+        score1 = Score()
+        score2 = Score(3, 9)
+        score3 = Score(4, 6)
+
+        print(score1.less_than(score2))
+        print(score3.less_than(score1))
+        print(score1.greater_than(score2))
+        print(score3.greater_than(score2))
+        print(score1.greater_than(score1))
+        print(score2.greater_than(score1))
+        print(score2.equal_to(score1))
+        print(score3.equal_to(score2))
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 gaa_demo_071.py
+    True
+    False
+    False
+    False
+    False
+    True
+    False
+    True
+
+
+Bank account
+
+    In bank_072.py define a BankAccount class to model a bank account. A bank account has a single data attribute: balance which can be zero or any positive floating point value. For any new BankAccount instance balance defaults to zero. In addition to an __init__() method the BankAccount class defines the following instance methods:
+        deposit() : adds an amount (supplied as an argument) to the balance
+        withdraw() : subtracts an amount (supplied as an argument) from the balance (or says ‘Insufficient funds available’ if withdrawing that amount would cause the balance to become negative)
+        __str__() : returns a string describing the current balance
+
+    Once your class is correctly implemented, running the following program should produce the given output:
+
+    from bank_072 import BankAccount
+
+    def main():
+        b1 = BankAccount()
+        print(b1)
+        b1.withdraw(1)
+        b1.deposit(100)
+        b1.deposit(150)
+        print(b1)
+        b1.withdraw(50)
+        print(b1)
+        b1.deposit(20)
+        b1.withdraw(100)
+        print(b1)
+
+        b2 = BankAccount(1000)
+        b2.deposit(1)
+        b2.withdraw(2000)
+        print(b2)
+        b2.withdraw(1001)
+        print(b2)
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 bank_demo_072.py
+    Your current balance is: 0.00 euro
+    Insufficient funds available
+    Your current balance is: 250.00 euro
+    Your current balance is: 200.00 euro
+    Your current balance is: 120.00 euro
+    Insufficient funds available
+    Your current balance is: 1001.00 euro
+    Your current balance is: 0.00 euro
+
+Geometry
+
+    In geometry_072.py define three classes: Point, Segment and Circle. The Point class models a point in a two dimensional space. A point has two data attributes: x and y. For any new Point instance x and y default to zero. In addition to an __init__() method the Point class defines the following instance methods:
+        distance() : returns the distance between two points (the second point is passed as an argument to the method)
+        __str__() : returns a string describing the point
+
+    The Segment class models a line segment. A segment has two data attributes: p1 and p2. They are each instances of Point. In addition to an __init__() method the Segment class defines the following instance methods:
+        midpoint() : returns an instance of Point that is the midpoint in the segment
+        length() : returns the length of the segment
+
+    The Circle class models a circle. A circle has two data attributes: radius (a floating point number) and centre (an instance of Point). In addition to an __init__() method the Circle class defines the following instance method:
+        overlap() : returns True if one Circle overlaps another (passed as an argument) and False otherwise
+
+    Once your classes are correctly implemented, running the following program should produce the given output:
+
+    from geometry_072 import Point, Segment, Circle
+
+    def main():
+        p1 = Point(2)
+        p2 = Point(6, 8)
+        p3 = Point(3, 4)
+
+        s1 = Segment(Point(), p3)
+        s2 = Segment(p1, p2)
+        p4 = s1.midpoint()
+
+        c1 = Circle(p1, 5)
+        c2 = Circle(p2, 2)
+        c3 = Circle(p1, 2)
+
+        print(p1)
+        print(p2)
+        print(p3)
+        print(p4)
+        print(s1.length())
+        print(c1.overlaps(c2))
+        print(c2.overlaps(c1))
+        print(c1.overlaps(c3))
+        print(c3.overlaps(c1))
+        print(c3.overlaps(c2))
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 geometry_demo_072.py
+    (2.0, 0.0)
+    (6.0, 8.0)
+    (3.0, 4.0)
+    (1.5, 2.0)
+    5.0
+    False
+    False
+    True
+    True
+    False
+
+Contact list
+
+    In contacts_072.py define two classes: Contact and ContactList. The Contact class models a contact. A contact has three data attributes: name, phone, email. In addition to an __init__() method the Contact class defines the following instance method:
+        __str__() : returns a string describing a contact’s details
+
+    The ContactList class models a contact list. A contact list has a single data attribute: d. d is a dictionary that maps a name to an instance of the Contact class. In addition to an __init__() method the ContactList class defines the following instance methods:
+        add_contact() : adds a new Contact to the contact list (or updates an existing Contact if already present)
+        del_contact() : removes a Contact from the contact list (no effect if no such contact exists)
+        get_contact() : returns the Contact with the specified name (or returns None if not in the contact list)
+        __str__() : returns a string containing all contacts’ details listed in alphabetical order (add each contact’s details to a list and invoke join on that list in order to build the output of this method)
+
+    Once your classes are correctly implemented, running the following program against the contact details supplied below should produce the given output:
+
+    from contacts_072 import Contact, ContactList
+    import sys
+
+    def main():
+        cl = ContactList()
+        for line in sys.stdin:
+            [name, phone, email] = line.strip().split()
+            c = Contact(name, phone, email)
+            cl.add_contact(c)
+
+        c = cl.get_contact('Jimmy')
+        print(c)
+        c = cl.get_contact('Mary')
+        print(c)
+
+        print(cl)
+        cl.del_contact('Maggie')
+        cl.del_contact('Maggie')
+
+        c = Contact('Sue', '087-6442378', 'sue@eircom.net')
+        cl.add_contact(c)
+        c = Contact('Fred', '085-8776543', 'fred@yahoo.com')
+        cl.add_contact(c)
+        print(cl)
+
+    if __name__ == '__main__':
+        main()
+
+    $ cat stdin.txt
+    Sue 085-6442378 sue@eircom.net
+    Jimmy 086-1223277 james@apple.com
+    Maggie 087-8822001 maggie@microsoft.com
+    Amy 087-3240516 amy@rte.ie
+    Wendy 086-9112645 wendy@physics.dcu.ie
+    Sean 085-3445123 sean@tcd.ie
+
+    $ python3 contacts_demo_072.py < stdin.txt
+    Jimmy 086-1223277 james@apple.com
+    None
+    Contact list
+    ------------
+    Amy 087-3240516 amy@rte.ie
+    Jimmy 086-1223277 james@apple.com
+    Maggie 087-8822001 maggie@microsoft.com
+    Sean 085-3445123 sean@tcd.ie
+    Sue 085-6442378 sue@eircom.net
+    Wendy 086-9112645 wendy@physics.dcu.ie
+    Contact list
+    ------------
+    Amy 087-3240516 amy@rte.ie
+    Fred 085-8776543 fred@yahoo.com
+    Jimmy 086-1223277 james@apple.com
+    Sean 085-3445123 sean@tcd.ie
+    Sue 087-6442378 sue@eircom.net
+    Wendy 086-9112645 wendy@physics.dcu.ie
+
+Coin
+
+    In coin_072.py define a Coin class to model a coin. A coin has a single data attribute: sideup which can take on the values ‘Heads’ or ‘Tails’. For any new Coin instance sideup defaults to ‘Heads’. In addition to an __init__() method the Coin class defines the following instance methods:
+        flip() : flips the coin after which sideup is random
+        getstate() : returns the current state of sideup
+        __str__() : returns a string describing the current state of the coin
+
+    Once your class is correctly implemented, running the following program should produce output similar to that given below:
+
+    from 072_coin import Coin
+
+    def main():
+        c = Coin()
+        for i in range(10):
+            c.flip()
+            print(c)
+
+        total = 0
+        p_state = c.sideup;
+        for i in range(1000):
+            c.flip()
+            if p_state == c.sideup == 'Heads':
+                total += 1
+            p_state = c.sideup
+
+        print('The odds of two heads in a row is: {:.2f}'.format(total/1000))
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 coin_demo_072.py
+    Current state : Tails
+    Current state : Heads
+    Current state : Tails
+    Current state : Heads
+    Current state : Heads
+    Current state : Heads
+    Current state : Heads
+    Current state : Tails
+    Current state : Heads
+    Current state : Tails
+    The odds of two heads in a row is: 0.23
+
+    Hint: Consult the notes on random numbers to find a way to simulate a random coin toss.

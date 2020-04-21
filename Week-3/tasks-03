@@ -1,0 +1,140 @@
+
+List comprehensions
+
+    Write a program called numcomps_031.py that uses a for loop and the range function to generate a list containing the numbers 1, 2, 3, …, N (where N is an integer supplied on the command line). Use the latter list in list comprehensions to have the program do the following:
+        Print a list of all multiples of 3 between 1 and N.
+        Print a list of the squares of all multiples of 3 between 1 and N.
+        Print a list of the double of all multiples of 4 between 1 and N.
+        Print a list of all multiples of either 3 or 4 between 1 and N.
+        Print a list of all multiples of both 3 and 4 between 1 and N.
+        Print a list of all numbers between 1 and N where multiples of 3 have been replaced by the character ‘X’.
+        Print a list of all prime numbers between 1 and N.
+
+    Here is an example of how the program should behave:
+
+    $ python3 numcomps_031.py 12
+    Multiples of 3: [3, 6, 9, 12]
+    Multiples of 3 squared: [9, 36, 81, 144]
+    Multiples of 4 doubled: [8, 16, 24]
+    Multiples of 3 or 4: [3, 4, 6, 8, 9, 12]
+    Multiples of 3 and 4: [12]
+    Multiples of 3 replaced: [1, 2, 'X', 4, 5, 'X', 7, 8, 'X', 10, 11, 'X']
+    Primes: [2, 3, 5, 7, 11]
+
+More list comprehensions
+
+    Write a program called wordcomps_031.py that reads words from stdin (one word per line) and stores them all in a list. Using list comprehensions and ignoring differences in case, have the program do the following:
+        Print a list of all words that contain exactly 17 letters.
+        Print a list of all words that contain more than 17 letters.
+        Print the shortest word that contains all vowels (‘aeiou’).
+        Print all words that contain four a’s.
+        Print all words that contain two or more q’s.
+        Print all words that contain the sequence ‘cie’.
+        Print all words that are anagrams of ‘angle’.
+        Print a count of all the words that end in ‘iary’.
+        Print the words that contain most e’s.
+
+    Your program should produce the following output when run against dictionary05.txt:
+
+    $ python3 wordcomps_031.py < dictionary05.txt
+    Words containing 17 letters: ['contradistinguish', 'counterproductive', 'counterrevolution', 'electrocardiogram', 'indistinguishable', 'paleoanthropology', 'psychotherapeutic', 'spectrophotometer']
+    Words containing 18+ letters: ['arteriolosclerosis', 'counterrevolutionary', 'diethylstilbestrol', 'electrocardiograph', 'electroencephalogram', 'electroencephalograph', 'electroencephalography', 'immunoelectrophoresis', 'triphenylphosphine']
+    Shortest word containing all vowels: Sequoia
+    Words with 4 a's: ['Alabama', 'Alabamian', 'amalgamate', 'Anastasia', 'Appalachia', 'Atalanta', 'Athabascan', 'baccalaureate', 'bacchanalian', 'Bhagavadgita', 'extravaganza', 'Macadamia', 'Madagascar', 'maharaja', 'Maharashtra', 'Mahayana', 'Nakayama', 'Panamanian', 'Paraguayan', 'paraphernalia', 'parliamentarian', 'Santayana', 'sarsaparilla', 'tarantara']
+    Words with 2+ q's: ['Albuquerque']
+    Words containing cie: ['ancient', 'coefficient', 'concierge', 'conscience', 'conscientious', 'deficient', 'efficient', 'financier', 'glacier', 'hacienda', 'inefficient', 'insufficient', 'Muncie', 'omniscient', 'proficient', 'science', 'scientific', 'scientist', 'societal', 'Societe', 'society', 'specie', 'species', 'sufficient']
+    Anagrams of angle: ['angel', 'Galen', 'glean', 'Lange']
+    Words ending in iary: 14
+    Words with most e's: ['dereference', 'teleconference']
+
+    Hint: When checking if a word should be included in the new list convert it to lower case for the purposes of the test but add the unmodified word to the list (should it pass the test).
+
+Q no u
+
+    Write a program called qnou_031.py that reads words from stdin (one word per line) and stores them all in a list. Making appropriate use of a list comprehension and ignoring differences in case, have the program print a list of all words in the list that contain a q that is not immediately followed by a u. For example:
+
+    $ cat stdin.txt
+    question
+    Colloq
+    IQ
+    Iraq
+    Iraqi
+    q
+    Qatar
+    QED
+    q's
+    seq
+    inquest
+
+    $ python3 qnou_031.py < stdin.txt
+    Words with q but no u: ['Colloq', 'IQ', 'Iraq', 'Iraqi', 'q', 'Qatar', 'QED', "q's", 'seq']
+
+    Note: Part of this exercise involves you coming up with test cases not present above but present in the hidden input/output on Einstein. Do not e-mail to say “My program works with the visible test case but not with the hidden one. What is wrong?”.
+
+Reverse words
+
+    Write a program called reversecomp_031.py that reads words from stdin (one word per line) and stores them all in a list. Making use of a list comprehension and ignoring differences in case, have the program print a list of all words that are at least five characters long and whose reverse also occurs in the list.
+
+    Your program should produce the following output when run against dictionary05.txt:
+
+    $ python3 reversecomp_031.py < dictionary05.txt
+    ['Ababa', 'civic', 'Damon', 'Hannah', 'lager', 'leper', 'level', 'lever', 'madam', 'minim', 'nomad', 'radar', 'refer', 'regal', 'repel', 'revel', 'rever', 'rotor', 'tenet']
+
+    Note that palindromes will appear in the program output since by definition their reverse is in the list of words.
+
+    Note there is a timeout on the program checker that will halt your program if it does not efficiently produce its answer.
+
+    You might implement binary search (as covered in CA116) over the list of sorted words in order to efficiently solve this problem. Using a dictionary or a set to solve the exercise is not permitted!
+
+Censor
+
+    Write a program called censor_032.py that reads a list of censored strings from a file supplied on the command line.
+
+    The program should then read the text supplied on stdin and output the same but with each censored string replaced by a string of ampersands of the same length. For example:
+
+    $ cat censored.txt
+    lass
+    boy
+    joy
+    he
+
+    $ cat stdin.txt
+    Nothing is so beautiful as Spring -
+    When weeds, in wheels, shoot long and lovely and lush;
+    Thrush's eggs look little low heavens, and thrush
+    Through the echoing timber does so rinse and wring
+    The ear, it strikes like lightnings to hear him sing;
+    The glassy peartree leaves and blooms, they brush
+    The descending blue; that blue is all in a rush
+    With richness; the racing lambs too have fair their fling.
+
+    What is all this juice and all this joy?
+    A strain of the earth's sweet being in the beginning
+    In Eden garden. - Have, get, before it cloy,
+    Before it cloud, Christ, lord, and sour with sinning,
+    Innocent mind and Mayday in girl and boy,
+    Most, O maid's child, thy choice and worthy the winning.
+
+    $ python3 censor_032.py censored.txt < stdin.txt
+    Nothing is so beautiful as Spring -
+    W@@n weeds, in w@@els, shoot long and lovely and lush;
+    Thrush's eggs look little low @@avens, and thrush
+    Through t@@ echoing timber does so rinse and wring
+    T@@ ear, it strikes like lightnings to @@ar him sing;
+    T@@ g@@@@y peartree leaves and blooms, t@@y brush
+    T@@ descending blue; that blue is all in a rush
+    With richness; t@@ racing lambs too have fair t@@ir fling.
+
+    What is all this juice and all this @@@?
+    A strain of t@@ earth's sweet being in t@@ beginning
+    In Eden garden. - Have, get, before it cloy,
+    Before it cloud, Christ, lord, and sour with sinning,
+    Innocent mind and Mayday in girl and @@@,
+    Most, O maid's child, thy choice and worthy t@@ winning.
+
+    Case should be ignored when looking for censored strings. Original case should be retained however in the output.
+
+    Replace censored strings in the order they are listed in the file censored.txt i.e. in the example above all instances of lass should be replaced before all instances of boy.
+
+    Upload your code to Einstein to have it verified.
+

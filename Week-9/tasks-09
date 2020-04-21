@@ -1,0 +1,482 @@
+
+Customer
+
+    In customer_091.py define a Customer class to model a customer account. Also define a ValuedCustomer class. The relationship between the two classes can be depicted as follows:
+    ../../_images/customer_091.png
+
+    Arrows connect subclasses to superclasses. Each box consists of three compartments: class name, data attributes, methods. If a data attribute is underlined it is a class variable (otherwise it is an instance variable). If a method is underlined it is a class method (otherwise it is an instance method).
+
+    Valued customers receive a 10% discount on their balances. Ordinary customers receive no discount. The owes() method returns the amount due by a customer (taking into account any discount).
+
+    When your classes are correctly implemented, running the following program should produce the given output:
+
+    from customer_091 import Customer, ValuedCustomer
+
+    def main():
+
+        c1 = Customer('Jimmy', 100, '22 Main Street', 'Naas', 'Kildare');
+        c2 = ValuedCustomer('Lucy', 100, '23 Main Street', 'Roosky', 'Roscommon');
+        c3 = Customer('Fred', 200, '24 Main Street', 'Sneem', 'Kerry');
+
+        print(c1)
+        print(c2)
+        print(c3)
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 customer_demo_091.py
+    Jimmy
+    22 Main Street
+    Naas
+    Kildare
+    Balance: 100.00
+    Discount: 0%
+    Amount due: 100.00
+    Lucy
+    23 Main Street
+    Roosky
+    Roscommon
+    Balance: 100.00
+    Discount: 10%
+    Amount due: 90.00
+    Fred
+    24 Main Street
+    Sneem
+    Kerry
+    Balance: 200.00
+    Discount: 0%
+    Amount due: 200.00
+
+Employee
+
+    In employee_091.py define an Employee class to model an employee. Also define Manager and AssemblyWorker classes. The relationship between the three classes can be depicted as follows:
+    ../../_images/employee_091.png
+
+    Arrows connect subclasses to superclasses. Each box consists of three compartments: class name, data attributes, methods. If a data attribute is underlined it is a class variable (otherwise it is an instance variable). If a method is underlined it is a class method (otherwise it is an instance method).
+
+    An Employee is defined by a name and an employee number.
+
+    A Manager earns a fixed salary per year but is paid on a weekly basis (you can simply assume there are 52 weeks in a year).
+
+    An AssemblyWorker is paid by the hour and works some number of hours per week.
+
+    The wages() method returns the weekly pay for any Employee or subclass thereof.
+
+    When your classes are correctly implemented, running the following program should produce the given output:
+
+    from employee_091 import Employee, Manager, AssemblyWorker
+
+    def main():
+
+        e1 = Manager('Mary', 1, 50000)
+        e2 = AssemblyWorker('Fred', 2, 15.50, 40)
+        e3 = Employee('Sean', 3)
+
+        print(e1)
+        print(e2)
+        print(e3)
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 employee_demo_091.py
+    Name: Mary
+    Number: 1
+    Wages: 961.54
+    Name: Fred
+    Number: 2
+    Wages: 620.00
+    Name: Sean
+    Number: 3
+    Wages: 0.00
+
+Geometry
+
+    In geometry_091.py define a Point class to model a point in two dimensions. Also define Shape, Triangle and Square classes. The relationship between the four classes can be depicted as follows:
+    ../../_images/geometry_091.png
+
+    Arrows connect subclasses to superclasses. Each box consists of three compartments: class name, data attributes, methods. If a data attribute is underlined it is a class variable (otherwise it is an instance variable). If a method is underlined it is a class method (otherwise it is an instance method).
+
+    Note the diagram does not indicate that a Point is a subclass of Shape. Rather it indicates that a Shape is composed of a number of points.
+
+    A Shape is defined by a sequence of connected instances of the Point class. (A connection from the last point to the first point in the sequence is assumed.) Thus the __init__() method of the Shape class takes a single argument: a list of instances of Point.
+
+    The perimeter() method of the Shape class returns the length of the perimeter of an instance of Shape.
+
+    The sides() method of the Shape class returns a list containing the length of each side of an instance of Shape. Note that the order of the sides in the list returned is important. If a shape is created from points P1, P2, P3 (in that order) then the sides returned must be P1-P2, P2-P3, P3-P1 (in that order).
+
+    The area, A, of a triangle whose sides are of length a, b, c, can be calculated using Heron’s method as follows:
+    A=s(s−a)(s−b)(s−c)−−−−−−−−−−−−−−−−−√
+
+where
+s=a+b+c2
+
+    When your classes are correctly implemented, running the following program should produce the given output:
+
+    from geometry_091 import Triangle, Square, Point
+
+    def main():
+
+        t1 = Triangle([Point(0,0), Point(3,4), Point(6, 0)])
+        print(t1.sides())
+        print(t1.perimeter())
+        print(t1.area())
+
+        t2 = Triangle([Point(0,0), Point(4,0), Point(4, 3)])
+        print(t2.sides())
+        print(t2.perimeter())
+        print(t2.area())
+
+        s1 = Square([Point(0,0), Point(5,0), Point(5,5), Point(0,5)])
+        print(s1.sides())
+        print(s1.perimeter())
+        print(s1.area())
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 geometry_demo_091.py
+    [5.0, 5.0, 6.0]
+    16.0
+    12.0
+    [4.0, 3.0, 5.0]
+    12.0
+    6.0
+    [5.0, 5.0, 5.0, 5.0]
+    20.0
+    25.0
+
+Bank account
+
+    In bankaccount_091.py define a BankAccount class to model a bank account. Also define CurrentAccount and SavingsAccount classes. The relationship between the three classes can be depicted as follows:
+    ../../_images/bankaccount_091.png
+
+    Arrows connect subclasses to superclasses. Each box consists of three compartments: class name, data attributes, methods. If a data attribute is underlined it is a class variable (otherwise it is an instance variable). If a method is underlined it is a class method (otherwise it is an instance method).
+
+    Every new bank account is assigned a unique account number. The first account number is 16555232, the second 16555233, etc.
+
+    Every current account has an overdraft facility of 1000 Euro.
+
+    Savings accounts earn interest at a rate of 1%. Interest is applied by invoking the apply_interest() method.
+
+    When your classes are correctly implemented, running the following program should produce the given output:
+
+    from bankaccount_091 import BankAccount, CurrentAccount, SavingsAccount
+
+    def main():
+        a1 = CurrentAccount('Joe', 'Murphy', 100)
+        a2 = SavingsAccount('Mandy', 'Murray', 100)
+        a3 = SavingsAccount('Jimmy', 'Smith', 200)
+        a4 = BankAccount('Frank', 'Wrigley', 500)
+
+        # Print base classes
+        print('Base classes...')
+        print(a1.__class__.__bases__)
+        print(a2.__class__.__bases__)
+
+        # Print account details
+        print('Account details...')
+        print(a1)
+        print(a2)
+        print(a3)
+        print(a4)
+        print('-' * 20)
+
+        # Call some methods
+        a1.lodge(50)
+        a1.withdraw(100)
+        a1.withdraw(100)
+        a1.withdraw(1000)
+        a2.withdraw(10)
+        a2.withdraw(100)
+        a2.lodge(20)
+        a2.apply_interest()
+        a4.lodge(20)
+        a4.withdraw(20)
+        a4.withdraw(1000)
+
+        # Some methods should not exist
+        try:
+            a1.apply_interest()
+        except AttributeError:
+            print('No such method')
+        try:
+            a4.apply_interest()
+        except AttributeError:
+            print('No such method')
+        print('-' * 20)
+
+        # Print account details
+        print('Account details...')
+        print(a1)
+        print(a2)
+        print(a3)
+        print(a4)
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 bankaccount_demo_091.py
+    Base classes...
+    (<class 'bankaccount_091.BankAccount'>,)
+    (<class 'bankaccount_091.BankAccount'>,)
+    Account details...
+    Name: Joe Murphy
+    Account number: 16555232
+    Account type: Current
+    Balance: 100.00
+    Overdraft: -1000.00
+    Name: Mandy Murray
+    Account number: 16555233
+    Account type: Savings
+    Balance: 100.00
+    Interest rate: 0.01
+    Name: Jimmy Smith
+    Account number: 16555234
+    Account type: Savings
+    Balance: 200.00
+    Interest rate: 0.01
+    Name: Frank Wrigley
+    Account number: 16555235
+    Account type: General
+    Balance: 500.00
+    --------------------
+    Insufficient funds available
+    Insufficient funds available
+    Insufficient funds available
+    No such method
+    No such method
+    --------------------
+    Account details...
+    Name: Joe Murphy
+    Account number: 16555232
+    Account type: Current
+    Balance: -50.00
+    Overdraft: -1000.00
+    Name: Mandy Murray
+    Account number: 16555233
+    Account type: Savings
+    Balance: 111.10
+    Interest rate: 0.01
+    Name: Jimmy Smith
+    Account number: 16555234
+    Account type: Savings
+    Balance: 200.00
+    Interest rate: 0.01
+    Name: Frank Wrigley
+    Account number: 16555235
+    Account type: General
+    Balance: 500.00
+
+Stack
+
+    In stack_092.py define a Stack class to model the stack abstract data type as follows:
+    ../../_images/stack_092.png
+
+    Each box consists of three compartments: class name, data attributes, methods. If a data attribute is underlined it is a class variable (otherwise it is an instance variable). If a method is underlined it is a class method (otherwise it is an instance method).
+
+    Read the notes on stack methods to determine their required behaviour.
+
+    When your class is correctly implemented, running the following program should produce the given output:
+
+    from stack_092 import Stack
+
+    def main():
+
+        s = Stack()
+
+        print(len(s))
+        s.push(1)
+        print(s.top())
+        print(s.is_empty())
+        print(s.pop())
+        print(s.is_empty())
+        try:
+            print(s.pop())
+        except IndexError:
+            print('Error')
+        try:
+            print(s.top())
+        except IndexError:
+            print('Error')
+        s.push(1)
+        s.push(2)
+        s.push(3)
+        print(len(s))
+        print(s.pop())
+        print(s.pop())
+        print(s.pop())
+        print(s.is_empty())   
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 stack_demo_092.py
+    0
+    1
+    False
+    1
+    True
+    Error
+    Error
+    3
+    3
+    2
+    1
+    True
+
+Queue
+
+    In queue_092.py define a Queue class to model the queue abstract data type as follows:
+    ../../_images/queue_092.png
+
+    Each box consists of three compartments: class name, data attributes, methods. If a data attribute is underlined it is a class variable (otherwise it is an instance variable). If a method is underlined it is a class method (otherwise it is an instance method).
+
+    Read the notes on queue methods to determine their required behaviour.
+
+    When your class is correctly implemented, running the following program should produce the given output:
+
+    from queue_092 import Queue
+
+    def main():
+
+        q = Queue()
+
+        print(len(q))
+        q.enqueue(1)
+        print(q.first())
+        print(q.is_empty())
+        print(q.dequeue())
+        print(q.is_empty())
+        try:
+            print(q.dequeue())
+        except IndexError:
+            print('Error')
+        try:
+            print(q.first())
+        except IndexError:
+            print('Error')
+        q.enqueue('cat')
+        q.enqueue('dog')
+        q.enqueue('fish')
+        print(len(q))
+        print(q.dequeue())
+        print(q.dequeue())
+        print(q.dequeue())
+        print(q.is_empty())   
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 queue_demo_092.py
+    0
+    1
+    False
+    1
+    True
+    Error
+    Error
+    3
+    cat
+    dog
+    fish
+    True
+
+Parentheses
+
+    In parentheses_092.py define a function called matcher() that takes a single parameter line (a string read from stdin). The matcher() function checks that all left and right parentheses in line match. matcher() should return True if parentheses match and False otherwise. Parentheses that need to be matched are “(){}[]”. For example:
+
+    from parentheses_092 import matcher
+    import sys
+
+    def main():
+
+        for line in sys.stdin:
+            print(matcher(line.strip()))
+
+    if __name__ == '__main__':
+        main()
+
+    $ cat parentheses_092.txt
+    ()
+    (())
+    (({}))
+    (())(){}{(([]))}
+    (()
+    (()){()]
+    )(()){([()])}
+
+    $  python3 parentheses_demo_092.py < parentheses_092.txt
+    True
+    True
+    True
+    True
+    False
+    False
+    False
+
+    Hints:
+        This problem is relatively easy to solve if you make good use of the stack class defined in stack_092.py so feel free to from stack_092 import Stack.
+        If “lefties” are “({[” then righties are “)}]”. Push lefties and pop on meeting a righty.
+
+RPN calculator
+
+    Reverse Polish Notation (RPN) is a mathematical notation in which every operator follows all of its operands. Examples:
+        2 + 3 is expressed as 2 3 +
+        2 + sqrt(3) is expressed as 2 3 r +
+        1 + 2 * 3 is expressed as 1 2 3 * +
+        5 * -2 is expressed as 5 2 n *
+        sqrt(-(2*(1-(2+3))*2)) is expressed as 2 1 2 3 + - * n r
+
+    In rpn_092.py define a function called calculator() that takes a single parameter line (an RPN expression read from stdin). The calculator() function computes the value of the RPN expression. Should the RPN expression be invalid then the calculator() function raises an IndexError exception. For example:
+
+    from rpn_092 import calculator
+    import sys
+
+    def main():
+
+        for line in sys.stdin:
+            try:
+                a = calculator(line.strip())
+                print('{:.2f}'.format(a))
+            except IndexError:
+                print('Invalid RPN expression')
+
+    if __name__ == '__main__':
+        main()
+
+    $ cat rpn_092.txt
+    5
+    8.5 2 /
+    2 3 +
+    2 3 r +
+    1 2 3 * +
+    5 2 n *
+    1 2 3 + -
+    2 1 2 3 + - *
+    2 1 2 3 + - * n
+    2 1 2 3 + - * n r
+    6 +
+    9 r
+
+    $ python3 rpn_demo_092.py < rpn_092.txt
+    5.00
+    4.25
+    5.00
+    3.73
+    7.00
+    -10.00
+    -4.00
+    -8.00
+    8.00
+    2.83
+    Invalid RPN expression
+    3.00
+
+    Hints:
+        Convert all user-supplied numbers to floats.
+        In solving this problem make good use of the stack class defined in stack_092.py so feel free to from stack_092 import Stack.
+        You might find two dictionaries useful: binops maps from each of +-*/ to a corresponding function while uniops maps from each of nr to a corresponding function.
+        When you encounter a number in an RPN expression push it onto the stack. If you encounter an operator pop its arguments from the stack (one or two), apply the operator to the popped argument(s) and push the result onto the stack.
+        If after processing an RPN expression you are left with a single number on the stack it is the answer (congratulations!) and your calculator() function should return it. Otherwise calculator() should raise an IndexError exception.

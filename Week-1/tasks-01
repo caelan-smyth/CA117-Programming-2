@@ -1,0 +1,342 @@
+
+Chop
+
+    Write a Python program called chop_011.py that reads lines of text from stdin. Each line consists of a single string. The program should print out the string minus its first and last characters. If there is nothing left after removing the first and last characters the program should not print anything. For example:
+
+    $ cat stdin.txt
+    Jimmy
+    ran
+    to
+    a
+    standstill
+
+    $ python3 chop_011.py < stdin.txt
+    imm
+    a
+    tandstil
+
+Capitals
+
+    Write a program called capitals_011.py that reads lines of text from stdin. Each line consists of a single string. The program should capitalise the first and last characters of the string and print the result. If the string has fewer than two characters the program should print nothing. For example:
+
+    $ cat stdin.txt
+    mittens
+    mit
+    m
+    pi
+    pittance
+
+    $ python3 capitals_011.py < stdin.txt
+    MittenS
+    MiT
+    PI
+    PittancE
+
+Middle
+
+    Write a program called middle_011.py that reads lines of text from stdin. Each line consists of a single string. The program should print out the middle character of each string. If the string does not have a middle character the program should print “No middle character!”. For example:
+
+    $ cat stdin.txt
+    marshmallow
+    pip
+    p
+    pips
+    zingy
+
+    python3 middle_011.py < stdin.txt
+    m
+    i
+    p
+    No middle character!
+    n
+
+Substring
+
+    Write a program called substring_011.py that reads lines of text from stdin. Each line consists of two strings. The program should print True if the first string is a substring of the second (and False otherwise). Note that differences in case can be ignored. For example:
+
+    $ cat stdin.txt
+    Rump Rumpelstiltskin
+    rump Rumpelstiltskin
+    stilt Rumpelstiltskin
+    stiLT Rumpelstiltskin
+    pest Rumpelstiltskin
+    up Rumpelstiltskin
+
+    $ python3 substring_011.py < stdin.txt
+    True
+    True
+    True
+    True
+    False
+    False
+
+Contains
+
+    Write a program called contains_011.py that reads lines of text from stdin. Each line consists of two strings. The program should print True if each of the characters in the first string is also in the second string (and False otherwise). Note that once a character has been matched in the second string it cannot be matched again. Also note that differences in case can be ignored. For example:
+
+    $ cat stdin.txt
+    c cat
+    AC cat
+    tac caT
+    ttac cat
+
+    $ python3 contains_011.py < stdin.txt
+    True
+    True
+    True
+    False
+
+    Hint: You may find the str.replace() method useful. Use help or pydoc to look it up.
+
+Convert to decimal
+
+    Write a program called conv2decimal_011.py that reads lines of text from stdin. Each line consists of two integers where the first is expressed to the base of the second. The program should convert the first number to the base 10 and print the result. For example:
+
+     $ cat stdin.txt
+    111 2
+    110 2
+    101 2
+    11 2
+    1 2
+    0 2
+    28 10
+    666 7
+
+    $ python3 conv2decimal_011.py < stdin.txt
+    7
+    6
+    5
+    3
+    1
+    0
+    28
+    342
+
+    Hint: You may find it useful to process the first integer in reverse, character-by-character.
+
+Camel case
+
+    Write a program called camelcase_011.py that reads lines of text from stdin. The program should capitalise the first character of each word in each line and print the result. For example:
+
+    $ cat stdin.txt
+    strawberry
+    strawberry fields
+    strawberry fields forever
+
+    $ python3 camelcase_011.py < stdin.txt
+    Strawberry
+    Strawberry Fields
+    Strawberry Fields Forever
+
+Crazy camel case
+
+    Write a program called crazycamel_011.py that reads lines of text from stdin. The program should capitalise the final character of each word in each line and print the result. For example:
+
+    $ cat stdin.txt
+    strawberry
+    strawberry fields
+    strawberry fields forever
+
+    $ python3 crazycamel_011.py < stdin.txt
+    strawberrY
+    strawberrY fieldS
+    strawberrY fieldS foreveR
+
+
+Diamond
+
+    Write a program called diamond_011.py that takes a single integer as a command line argument. The program should print a diamond whose middle line contains that number of asterisks. For example:
+
+    $ python3 diamond_011.py 5
+        *
+       * *
+      * * *
+     * * * *
+    * * * * *
+     * * * *
+      * * *
+       * *
+        *
+
+    $ python3 diamond_011.py 4
+       *
+      * *
+     * * *
+    * * * *
+     * * *
+      * *
+       *
+
+    $ python3 diamond_011.py 3
+      *
+     * *
+    * * *
+     * *
+      *
+
+    $ python3 diamond_011.py 2
+     *
+    * *
+     *
+
+    $ python3 diamond_011.py 1
+    *
+
+    Hints:
+        Begin by coming up with expressions for the number of lines in the diamond (in terms of n), the number of leading spaces in line k and the number of asterisks in line k. You should not start coding until you have completed this analysis.
+        print(' ', end='') will print a space without going on to a new line afterwards.
+        You may find the abs() function useful. It returns the absolute value of a number.
+
+
+Password security
+
+    Password security is a problem when users choose passwords that can be easily guessed. Write a Python program that assesses the security of a password by counting the number of character classes it contains. For our purposes there are four character classes: digits, lower case characters, upper case characters and special characters (i.e. everything else).
+
+    Write a program called password_012.py that reads passwords from stdin. For each password read the program should print out the number of character classes it contains. For example:
+
+    $ cat stdin.txt
+    256
+    abc
+    aBc
+    1aBc2
+    ^@())($$$
+    ^@a1())B($43$$
+
+    $ python3 password_012.py < stdin.txt
+    1
+    1
+    2
+    3
+    1
+    4
+
+    Hint: Use pydoc or help to have a look at the str class documentation. You will find described therein various methods that will be useful in determining the class of each character in the string.
+
+Plural
+
+    Write a program called plural_012.py that reads nouns from stdin. For each noun read the program should print its plural according to the following rules:
+        Add es if the noun ends in ch, sh, x, s or z.
+        If a noun ends in a consonant + y drop the y and add ies.
+        If a noun ends in f (or fe) drop the f (or fe) and add ves.
+        If a noun ends in o add es.
+        Otherwise add s.
+
+    For example:
+
+    $ cat stdin.txt
+    peach
+    wife
+    bay
+    dish
+    box
+    fuss
+    fuzz
+    banjo
+    dainty
+    toy
+    self
+    nut
+
+    $ python3 plural_012.py < stdin.txt
+    peaches
+    wives
+    bays
+    dishes
+    boxes
+    fusses
+    fuzzes
+    banjoes
+    dainties
+    toys
+    selves
+    nuts
+
+Pi
+
+    Write a program called pi_012.py that takes a single integer as a command line argument and prints pi to that number of decimal places. Note you will have to import the math module to get access to the math.pi constant. For example:
+
+    $ python3 pi_012.py 1
+    3.1
+    $ python3 pi_012.py 2
+    3.14
+    $ python3 pi_012.py 3
+    3.142
+    $ python3 pi_012.py 4
+    3.1416
+    $ python3 pi_012.py 10
+    3.1415926536
+
+Sphere
+
+    The surface area and volume of a sphere are given by the following formulae:
+    A=4πr^2
+    V=4/3πr^3
+
+Write a program called sphere_012.py that takes three floating point numbers as command line arguments: a starting radius, a radius increment and an ending radius. The program should print a table of corresponding sphere surface areas and volumes. For example:
+
+$ python3 sphere_012.py 1 1 10
+Radius (m)      Area (m^2)    Volume (m^3)
+----------      ----------    ------------
+       1.0           12.57            4.19
+       2.0           50.27           33.51
+       3.0          113.10          113.10
+       4.0          201.06          268.08
+       5.0          314.16          523.60
+       6.0          452.39          904.78
+       7.0          615.75         1436.76
+       8.0          804.25         2144.66
+       9.0         1017.88         3053.63
+      10.0         1256.64         4188.79
+
+$ python3 sphere_012.py 10 2 20
+Radius (m)      Area (m^2)    Volume (m^3)
+----------      ----------    ------------
+      10.0         1256.64         4188.79
+      12.0         1809.56         7238.23
+      14.0         2463.01        11494.04
+      16.0         3216.99        17157.28
+      18.0         4071.50        24429.02
+      20.0         5026.55        33510.32
+
+$ python3 sphere_012.py 1 .25 5
+Radius (m)      Area (m^2)    Volume (m^3)
+----------      ----------    ------------
+       1.0           12.57            4.19
+       1.2           19.63            8.18
+       1.5           28.27           14.14
+       1.8           38.48           22.45
+       2.0           50.27           33.51
+       2.2           63.62           47.71
+       2.5           78.54           65.45
+       2.8           95.03           87.11
+       3.0          113.10          113.10
+       3.2          132.73          143.79
+       3.5          153.94          179.59
+       3.8          176.71          220.89
+       4.0          201.06          268.08
+       4.2          226.98          321.56
+       4.5          254.47          381.70
+       4.8          283.53          448.92
+       5.0          314.16          523.60
+
+Hint: Here is some code to get you started:
+import sys
+import math
+
+def main():
+    start_r = float(sys.argv[1])
+    inc_r = float(sys.argv[2])
+    end_r = float(sys.argv[3])
+
+    h1 = 'Radius (m)'
+    h4 = '-' * len(h1)
+    h2 = 'Area (m^2)'
+    h5 = '-' * len(h2)
+    h3 = 'Volume (m^3)'
+    h6 = '-' * len(h3)
+
+    print('{:>s} {:>15s} {:>15s}'.format(h1, h2, h3))
+    print('{:>s} {:>15s} {:>15s}'.format(h4, h5, h6))
+
+if __name__ == '__main__':
+    main()

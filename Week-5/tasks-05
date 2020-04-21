@@ -1,0 +1,245 @@
+
+Question 1 [20 marks]
+
+    Write a program called q1_051.py that reads a string from the command line and swaps all adjacent characters in the string and prints the result. You can assume the input string will always contain one or more characters. For example:
+
+    $ python3 q1_051.py a
+    a
+
+    $ python3 q1_051.py ab
+    ba
+
+    $ python3 q1_051.py tiger
+    itegr
+
+    $ python3 q1_051.py penguins
+    epgniusn
+
+Question 2 [20 marks]
+
+    Write a program called q2_051.py that reads a list of words from stdin (one word per line). The program should print all words in the list that contain a single instance of each of the characters “e”, “v”, “i”, “l”, in that order. Matching characters can be in upper or lower case. Words must be output in the order they are read from stdin. For example:
+
+    $ cat stdin.txt
+    aardvark
+    Evil
+    DEVILLED
+    live
+    devillish
+    fervidly
+    evilly
+    PREVAIL
+    previously
+    devotional
+    enviably
+    eevil
+    zebra
+
+    $ python3 q2_051.py < stdin.txt
+    Evil
+    fervidly
+    PREVAIL
+    previously
+    devotional
+    enviably
+
+Question 3 [20 marks]
+
+    Write a program called q3_051.py that reads strings from stdin (each string is a sequence of upper and lower case characters) and prints the longest sequence of contiguous upper case letters contained in each string. (You can assume the length of the longest sequence is positive and unique.) For example:
+
+    $ cat stdin.txt
+    Abc
+    aBc
+    abC
+    ABCDefgHI
+    ABcdEFGHIjk
+    aBCdefGHIKLMNOP
+    ABCDEFGH
+
+    $ python3 q3_051.py < stdin.txt
+    A
+    B
+    C
+    ABCD
+    EFGHI
+    GHIKLMNOP
+    ABCDEFGH  
+
+Question 4 [25 marks]
+
+    Write a program called q4_051.py that reads a list of integers from stdin. Each line contains a single integer. After reading all integers the program should print the mean and median of the values entered to one decimal place only.
+        The mean is average of the list of numbers.
+        The median is the middle number in the sorted list of numbers (if an even number of numbers is entered the median is the average of the two middle numbers in the sorted list). For example the median of [1, 1, 2, 4, 5] is 2 while the median of [2, 2, 3, 4] is (2+3)/2 = 2.5.
+
+    Example 1:
+
+    $ cat stdin.txt
+    1
+    4
+    5
+    1
+    2
+
+    $ python3 q4_051.py < stdin.txt
+    Mean: 2.6
+    Median: 2.0
+
+    Example 2:
+
+    $ cat stdin.txt
+    2
+    4
+    2
+    3
+
+    $ python3 q4_051.py < stdin.txt
+    Mean: 2.8
+    Median: 2.5
+
+    Note: You may not use Python’s statistics module in your solution (the only module you may import is sys).  
+
+Question 5 [25 marks]¶
+
+    Middle-distance runners run some arbitrary number of races (at least one) in a season. Write a program called q5_051.py that reads runners’ times for the season from stdin. Each line read from stdin is structured as follows:
+
+    Runner’s name: time_1 time_2 time_3 …
+
+    Each name is a single string. Each time is in the form minutes:seconds. Having read in all times the program should print the name of the runner with the best time over the course of the season along with that time (you may assume there will always be one clear winner). Should any of the times be invalid then the corresponding runner should be ignored. For example:
+
+    $ cat stdin.txt
+    Rachel 8:12 8:32 8:00 7:12 8:09
+    Fred 11:12 11:13 11:14 11:14 11:10
+    Naomi 8:45 9:01 10:11 8:18 9:00
+    Jimmy 8:12 8:2b 8:19 7:13 10:11
+    Ned 7:34 7:00 6:45 7:19 7:01
+
+    $ python3 q5_051.py < stdin.txt
+    Ned : 6:45
+
+Question 1 [20 marks]
+
+    Write a program called q1_052.py that reads two command line arguments: a string s and an integer N. The program should rotate the string s clockwise by N steps and print the result. You may assume N is always zero or positive. For example:
+
+    $ python3 q1_052.py python 0
+    python
+    $ python3 q1_052.py python 1
+    npytho
+    $ python3 q1_052.py python 2
+    onpyth
+    $ python3 q1_052.py python 3
+    honpyt
+    $ python3 q1_052.py python 4
+    thonpy
+    $ python3 q1_052.py python 5
+    ythonp
+    $ python3 q1_052.py python 6
+    python
+    $ python3 q1_052.py python 7
+    npytho
+    $ python3 q1_052.py python 8
+    onpyth
+    $ python3 q1_052.py python 9
+    honpyt
+    $ python3 q1_052.py python 10
+    thonpy
+
+Question 2 [20 marks]
+
+    Write a program called q2_052.py that reads a list of words from stdin (one word per line). The program should print all words in the list that contain a single instance of each of the characters “a”, “e”, “i”, “o”, , “u”, in that order. Matching characters can be in upper or lower case. Words must be output in the order they are read from stdin. For example:
+
+    $ cat stdin.txt
+    aardvark
+    uaeio
+    facetious
+    Sequoia
+    Abstemious
+    aeiouu
+    aaeiou
+    aeiouA
+
+    $ python3 q2_052.py < stdin.txt
+    facetious
+    Abstemious
+
+Question 3 [20 marks]
+
+    Write a Python module called q3_052.py that defines two functions:
+        build_dictionary(filename): This function reads mappings from the file specified by filename and returns the corresponding dictionary. Each mapping is from a single string to a single integer.
+        extract_range(d, low, high): This function extracts all mappings in d from a key to a value where low <= value <= high and returns a new dictionary containing only those mappings.
+
+    Once you have correctly implemented q3_052.py then running the following program should produce the given output:
+
+    #!/usr/bin/env python3
+
+    '''Demonstrate use of extract_range function.'''
+
+    import q3_052
+
+    def main():
+        d = q3_052.build_dictionary('q3_052_mappings.txt')
+
+        nd = q3_052.extract_range(d, 5, 15)
+
+        for (k, v) in sorted(nd.items()):
+            print('{} : {}'.format(k, v))
+
+    if __name__ == '__main__':
+        main()
+
+    $ cat q3_052_mappings.txt
+    giraffes 12
+    seals 9
+    snakes 20
+    aardvarks 6
+    kangaroos 22
+    penguins 17
+
+    $ python3 q3_demo_052.py
+    aardvarks : 6
+    giraffes : 12
+    seals : 9
+
+Question 4 [25 marks]
+
+    Write a program called q4_052.py that takes a single command line argument: a filename. The contents of the given file is a list of foodstuffs and their corresponding calorie content. The program should read lines of text from stdin consisting of a name followed by a comma separated list of consumed foodstuffs. The program should calculate the total calories consumed for each person and print the results in a sorted list (in order of increasing calorie count). For example, given the calories listed in q4_052_calories.txt and the input data given below, your program should behave as follows:
+
+    $ cat stdin.txt
+    joe,almonds,almonds,blue cheese,cabbage,mayonnaise,cherry pie,cola
+    mary,apple pie,avocado,broccoli,butter,danish pastry,lettuce,apple
+    sandy,zuchini,yogurt,veal,tuna,taco,pumpkin pie,macadamia nuts,brazil nuts
+    trudy,waffles,waffles,waffles,chicken noodle soup,chocolate chip cookie
+
+    $ python3 q4_052.py q4_052_calories.txt < stdin.txt
+    trudy :  875
+     mary :  985
+    sandy : 2186
+      joe : 2375
+
+    Notes:
+        Your program should assign a calorie count of 100 to any foodstuff read from stdin for which no calorie data is available.
+        Both the foodstuff calorie statistics and the details read from stdin are variable i.e. you should not hardcode either in your program.
+        Name and total calorie columns must be tablulated as shown above. The name column is wide enough to accomodate the longest name. The total column is wide enough to accommodate the largest total.    
+
+Question 5 [25 marks]
+
+    Write a program called q5_052.py that reads a set of student exam question marks from stdin. Each line contains an arbitrary number of marks for a specific student and is structured as follows:
+
+    Student name:question_1_mark,question_2_mark,…,question_N_mark
+
+    Having read in all lines (the number of lines is arbitrary) the program should print the resulting table in descending order of overall mark for each student. (You may assume there will be no ties.) Should any of the individual question marks be invalid (i.e. not an integer) then the corresponding student is excluded from the final table. A list of all excluded students (in the order they are read from stdin) is printed after the table. For example:
+
+    $ cat stdin.txt
+    Sean T. O'Malley:5,1,3
+    Mary O'Brien:1,2,19,20,7
+    Agatha Agapanthus:13,14,10,X,19
+    Frank Byrne:33,20,33
+    Frank Butcher:3,b
+    Gladys Gladioli:19
+
+    $ python3 q5_052.py < stdin.txt
+    Frank Byrne : 86
+    Mary O'Brien : 49
+    Gladys Gladioli : 19
+    Sean T. O'Malley : 9
+    Skipped:
+    Agatha Agapanthus
+    Frank Butcher

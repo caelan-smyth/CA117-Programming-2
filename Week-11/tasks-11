@@ -1,0 +1,491 @@
+
+Triathlete part 1
+
+    In module triathlete_v1_111.py define a Triathlete class to model a triathlete. A triathlete has a name and ID number. When your class is correctly implemented, running the following program should produce the given output:
+
+    from triathlete_v1_111 import Triathlete
+
+    def main():
+        t1 = Triathlete('Ian Brown', 21)
+        t2 = Triathlete('John Squire', 22)
+
+        assert(t1.name == 'Ian Brown')
+        assert(t1.tid == 21)
+        
+        print(t1)
+        print(t2)
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 triathlete_v1_demo_111.py
+    Name: Ian Brown
+    ID: 21
+    Name: John Squire
+    ID: 22
+
+    You are required to submit your solution by uploading it here.
+
+Triathlete part 2
+
+    In module triathlete_v2_111.py extend the Triathlete class to support the recording of per-discipline times for a triathlete. (Disciplines are swimming, cycling and running and times are recorded in seconds.) When your class is correctly implemented, running the following program should produce the given output:
+
+    from triathlete_v2_111 import Triathlete
+
+    def main():
+
+        t1 = Triathlete('Ian Brown', 21)
+
+        t1.add_time('swim', 100)
+        t1.add_time('cycle', 120)
+        t1.add_time('run', 150)
+
+        print('Cycle: {}'.format(t1.get_time('cycle')))
+        print(t1)
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 triathlete_v2_demo_111.py
+    Cycle: 120
+    Name: Ian Brown
+    ID: 21
+    Race time: 370
+
+    You are required to submit your solution by uploading it here.
+
+Triathlete part 3
+
+    In module triathlete_v3_111.py extend the Triathlete class to support the comparison of triathletes. Comparison is carried out in terms of a triathlete’s race time. When your class is correctly implemented, running the following program should produce the given output:
+
+    from triathlete_v3_111 import Triathlete
+
+    def main():
+
+        t1 = Triathlete('Ian Brown', 21)
+        t2 = Triathlete('John Squire', 22)
+        t3 = Triathlete('Alan Wren', 23)
+
+        t1.add_time('swim', 100)
+        t1.add_time('cycle', 120)
+        t1.add_time('run', 150)
+
+        t2.add_time('swim', 300)
+        t2.add_time('cycle', 100)
+        t2.add_time('run', 200)
+
+        t3.add_time('swim', 150)
+        t3.add_time('cycle', 120)
+        t3.add_time('run', 100)
+
+        print(t1)
+        print(t2)
+        print(t3)
+
+        assert(t1 == t3)
+        assert(t1 < t2)
+        assert(t2 > t3)
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 triathlete_v3_demo_111.py
+    Name: Ian Brown
+    ID: 21
+    Race time: 370
+    Name: John Squire
+    ID: 22
+    Race time: 600
+    Name: Alan Wren
+    ID: 23
+    Race time: 370
+
+    You are required to submit your solution by uploading it here.
+
+Triathlon part 1
+
+    In module triathlon_v1_111.py define a Triathlon class to model a collection of triathletes. A triathlon is essentially a mapping from triathlete IDs to Triathlete objects.
+
+    You must include in triathlon_v1_111.py a copy of your Triathlete class definition from triathlete_v1_111.py.
+
+    Triathletes can be added to and removed from the triathlon via the add() and remove() methods respectively.
+
+    A lookup() method returns a Triathlete object if a given triathlete is in the triathlon and None otherwise.
+
+    When your class is correctly implemented, running the following program should produce no output:
+
+    from triathlon_v1_111 import Triathlete, Triathlon
+
+    def main():
+
+        tn = Triathlon()
+        t1 = Triathlete('Ian Brown', 21)
+        t2 = Triathlete('John Squire', 22)
+
+        tn.add(t1)
+        tn.add(t2)
+
+        t = tn.lookup(21)
+        assert(isinstance(t, Triathlete))
+        assert(t.name == 'Ian Brown')
+        assert(t.tid == 21)
+        
+        tn.remove(21)
+        t = tn.lookup(21)
+        assert(t is None)
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 triathlon_v1_demo_111.py
+    $
+
+    You are required to submit your solution by uploading it here.
+
+Triathlon part 2
+
+    In module triathlon_v2_111.py extend the Triathlon class to support the printing of a triathlon. Printing a triathlon prints all triathlete details in alphabetical order of their names.
+
+    You must include in triathlon_v2_111.py a copy of your Triathlete class definition from triathlete_v1_111.py.
+
+    When your class is correctly implemented, running the following program should produce the given output:
+
+    from triathlon_v2_111 import Triathlete, Triathlon
+
+    def main():
+
+        tn = Triathlon()
+        t1 = Triathlete('Ian Brown', 21)
+        t2 = Triathlete('John Squire', 22)
+        t3 = Triathlete('Alan Wren', 23)
+
+        tn.add(t1)
+        tn.add(t2)
+        tn.add(t3)
+
+        print(tn)
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 triathlon_v2_demo_111.py
+    Name: Alan Wren
+    ID: 23
+    Name: Ian Brown
+    ID: 21
+    Name: John Squire
+    ID: 22
+
+    You are required to submit your solution by uploading it here.
+
+Triathlon part 3
+
+    In module triathlon_v3_111.py extend the Triathlon class to support retrieval of the Triathletes with the best and worst race times.
+
+    You must include in triathlon_v3_111.py a copy of your Triathlete class definition from Triathlete_v3_111.py.
+
+    When your class is correctly implemented, running the following program should produce the given output:
+
+    from triathlon_v3_111 import Triathlete, Triathlon
+
+    def main():
+
+        tn = Triathlon()
+        t1 = Triathlete('Ian Brown', 21)
+        t2 = Triathlete('John Squire', 22)
+        t3 = Triathlete('Alan Wren', 23)
+
+        t1.add_time('swim', 100)
+        t1.add_time('cycle', 120)
+        t1.add_time('run', 150)
+
+        t2.add_time('swim', 300)
+        t2.add_time('cycle', 100)
+        t2.add_time('run', 200)
+
+        t3.add_time('swim', 50)
+        t3.add_time('cycle', 20)
+        t3.add_time('run', 10)
+        
+        tn.add(t1)
+        tn.add(t2)
+        tn.add(t3)
+
+        print(tn.best())
+        print(tn.worst())
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 triathlon_v3_demo_111.py
+    Name: Alan Wren
+    ID: 23
+    Race time: 80
+    Name: John Squire
+    ID: 22
+    Race time: 600
+
+    You are required to submit your solution by uploading it here.
+
+Weight
+
+    In module weight_111.py define a Weight class to model a weight. Every weight consists of some number of pounds and ounces. There are 16 ounces in a pound. (Thus the number of ounces in any weight will never exceed 15.)
+
+    When your class is correctly implemented, running the following program should produce the given output:
+
+    from weight_111 import Weight
+
+    def main():
+
+        # Create some weights
+        w1 = Weight()
+        w2 = Weight(6, 4)
+        w3 = Weight.from_ounces(100)
+
+        # Confirm all are instances of Weight
+        assert(isinstance(w1, Weight))
+        assert(isinstance(w2, Weight))
+        assert(isinstance(w3, Weight))
+        
+        # Ounces per pound
+        print('Ounces in a pound: {}'.format(Weight.OUNCES_PER_POUND))
+
+        # Display weights
+        print('Weights...')
+        print(w1)
+        print(w2)
+        print(w3)
+
+        # Check relations
+        assert(w1 != w2)
+        assert(w2 == w3)
+        assert(w1 < w2)
+        assert(w3 > w1)
+        assert(w2 >= w3)
+
+        # Addition
+        print('Addition...')
+        w4 = w2 + w3
+        assert(isinstance(w4, Weight))
+        print(w4)
+
+        # In-place addition
+        print('In-place addition...')
+        w2_alias = w2
+        w2 += w3
+        assert(w2 is w2_alias)
+        print(w2)
+
+        # Multiplication
+        print('Multiplication...')
+        w5 = w3 * 3
+        assert(isinstance(w5, Weight))
+        print(w5)
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 weight_demo_111.py
+    Ounces in a pound: 16
+    Weights...
+    0 pound(s) and 0 ounce(s)
+    6 pound(s) and 4 ounce(s)
+    6 pound(s) and 4 ounce(s)
+    Addition...
+    12 pound(s) and 8 ounce(s)
+    In-place addition...
+    12 pound(s) and 8 ounce(s)
+    Multiplication...
+    18 pound(s) and 12 ounce(s)
+
+    You are required to submit your solution by uploading it here.
+
+Car registrations
+
+    The format of an Irish car registration is YYY CC SSSSSS where YYY is a three digit year whose final digit must be 1 or 2. CC is a county code and is one of C, CE, CN, CW, D, DL, G, KE, KK, KY, L, LD, LH, LM, LS, MH, MN, MO, OY, RN, SO, T, W, WH, WX, WW. SSSSSS is a 1-6 digit sequence number (whose leading digit cannot be zero).
+
+    Write a module called carreg_111.py which defines a regular expression: car. The car regular expression matches valid car registrations as defined above.
+
+    When your regular expression is correctly defined, running the following program should produce the given output:
+
+    from re import findall
+    import sys
+
+    from carreg_111 import car
+
+    def main():
+
+        # Verify regular expression is not overly long
+        assert(len(car) < 120)
+
+        s = sys.stdin.read()
+        
+        carlist = findall(car, s)
+        print('Cars: {}'.format(carlist))
+
+    if __name__ == '__main__':
+        main()
+
+    $ cat cars_111.txt
+    # Valid car registrations
+    151 D 1
+    151 D 10
+    142 KY 2
+    161 C 1111
+
+    # Invalid car registrations
+    151 D 0
+    151 D 01
+    153 D 3
+    1151 D 3
+    151 DE 4
+    142 C 01
+    142 C 1a
+    142 Ca 01
+    1142 Ca 01
+    141 G abc
+
+    $ python3 carreg_demo_111.py < cars_111.txt
+    Cars: ['151 D 1', '151 D 10', '142 KY 2', '161 C 1111']
+
+Quicksort
+
+    Combine the code presented in the lecture notes to implement the quicksort algorithm in a module named quicksort_112.py.
+
+    When implemented correctly, running the following program should produce similar output (your random numbers will obviously be different):
+
+    from quicksort_112 import quicksort
+    import random
+
+    def main():
+        A = random.sample(range(-99, 100), 10)
+
+        print('Unsorted: {}'.format(A))
+        quicksort(A, 0, len(A)-1)
+        print('Sorted: {}'.format(A))
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 quicksort_demo_112.py
+    Unsorted: [55, -81, 86, -32, 77, -34, -33, -23, 30, 64]
+    Sorted: [-81, -34, -33, -32, -23, 30, 55, 64, 77, 86]
+
+Selection sort
+
+    From your CA116 notes implement the selection sort algorithm in a module named selectionsort_112.py.
+
+    When implemented correctly, running the following program should produce similar output (your random numbers will obviously be different):
+
+    from selectionsort_112 import selectionsort
+    import random
+
+    def main():
+        A = random.sample(range(-99, 100), 10)
+
+        print('Unsorted: {}'.format(A))
+        selectionsort(A)
+        print('Sorted: {}'.format(A))
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 selectionsort_demo_112.py
+    Unsorted: [85, 33, -69, 81, 51, 29, -60, 39, 59, -49]
+    Sorted: [-69, -60, -49, 29, 33, 39, 51, 59, 81, 85]
+
+Priority queue
+
+    In priority_queue_112.py define a PQ class that implements a priority queue. Your implementation must be based on a maximum heap.
+
+    When your class is correctly implemented, running the following program should produce no output:
+
+    from priority_queue_112 import PQ
+
+    def main():
+
+        pq = PQ()
+        assert(pq.is_empty() == True)
+        assert(pq.size() == 0)
+        pq.insert(5)
+        pq.insert(6)
+        pq.insert(12)
+        pq.insert(3)
+        pq.insert(15)
+        pq.insert(9)
+        assert(pq.is_empty() == False)
+        assert(pq.size() == 6)
+        assert(pq.d[1] == 15)
+        assert(pq.d[2] == 12)
+        assert(pq.d[3] == 9)
+        assert(pq.d[4] == 3)
+        assert(pq.d[5] == 5)
+        assert(pq.d[6] == 6)
+        assert(pq.getMax() == 15)
+        assert(pq.delMax() == 15)
+        assert(pq.delMax() == 12)
+        assert(pq.delMax() == 9)
+        assert(pq.delMax() == 6)
+        assert(pq.delMax() == 5)
+        assert(pq.delMax() == 3)
+        assert(pq.is_empty() == True)
+        assert(pq.size() == 0)
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 pq_demo_112.py
+    $
+
+Heap representation
+
+    Draw a tree depicting the contents (including dictionary keys and values) and structure of the binary heap pq once the following instructions are completed:
+
+        pq = PQ()
+        pq.insert(5)
+        pq.insert(6)
+        pq.insert(12)
+        pq.insert(3)
+        pq.insert(15)
+        pq.insert(9)
+
+Minimum elements
+
+    We want to identify the M smallest integers in a list of N integers. The list of N integers is to be read from stdin (one integer per line). Assume N is huge i.e. we cannot store all N integers in memory at once.
+
+    Write a program called minelts_112.py that outputs the M smallest integers in descending order (where M is supplied on the command line) in a list of N integers read from stdin.
+
+    Note you must make good use of the priority queue class defined in priority_queue_112.py so feel free to from priority_queue_112 import PQ.
+
+    Also note you cannot have all N integers in memory at once.
+
+    Here is an example:
+
+    $ cat stdin.txt
+    96
+    64
+    99
+    4
+    7
+    42
+    75
+    76
+    74
+    14
+    47
+    16
+    80
+    10
+    51
+    20
+    15
+    79
+    60
+    30
+
+    $ python3 minelts_112.py 5 < stdin.txt
+    15
+    14
+    10
+    7
+    4

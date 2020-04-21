@@ -1,0 +1,330 @@
+
+Anagrams
+
+    Two words are anagrams if the letters of one word can be rearranged to form the other word. For example angel and glean are anagrams. Write a Python program called anagram_021.py that reads in pairs of words (one pair per line) from stdin and prints True if the pair are anagrams and False otherwise. For example:
+
+    $ cat stdin.txt
+    cinema iceman
+    dog god
+    house car
+    stub buts
+    angel glean
+    aangl angel
+    a aardvark
+    aardvark a
+
+    $ python3 anagram_021.py < stdin.txt
+    True
+    True
+    False
+    True
+    True
+    False
+    False
+    False
+
+Palindromes
+
+    A palindrome is a word, phrase, number or other sequence of characters which reads the same backwards as forwards. Allowances are made for capital letters, punctuation and white space (word dividers). Write a program called palindrome_021.py that reads lines of text from stdin and prints True if the line is a palindrome and False otherwise. For example:
+
+    $ cat stdin.txt
+    Step on no pets.
+    Step on no cats.
+    Able was I ere I saw Elba.
+    Doc, note: I dissent. A fast never prevents a fatness. I diet on cod.
+    Bananas
+    Abel was I ere
+    A
+    Aa
+    ABa
+    123.
+    1221.
+    4444444.
+    This is not a palindrome.
+
+    $ python3 palindrome_021.py < stdin.txt
+    True
+    False
+    True
+    True
+    False
+    False
+    True
+    True
+    True
+    False
+    True
+    True
+    False
+
+    Hints:
+        Convert the string to lowercase first. Use pydoc to check out the str class documentation. You need to find a method that will do the conversion for you.
+        You need to strip out any characters which are not alphanumeric. Again, use pydoc to check out the str class documentation to find methods that will help you.
+        Once you have the string in canonical form (i.e. in lowercase with all non-alphanumeric characters removed) then simply check whether it is the same sequence backwards as forwards.
+
+Token count
+
+    Write a program called token_count_021.py that counts the tokens (a token is anything delimited by white space) in lines of text read from stdin. Running the program against gettysburg.txt should produce the following output:
+
+    $ python3 token_count_021.py < gettysburg.txt
+    283
+
+    Hints: Here is the sorted list of what my code considers a token:
+
+    ['--', '--', '--', '--', '--', '--', '--', '1863', '19,', 'Abraham', 'But,', 'Four', 'God,', 'It', 'It', 'It', 'Liberty,', 'Lincoln', 'November', 'Now', 'The', 'The', 'We', 'We', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'above', 'add', 'advanced.', 'ago', 'all', 'altogether', 'and', 'and', 'and', 'and', 'and', 'and', 'any', 'are', 'are', 'are', 'as', 'battle-field', 'be', 'be', 'before', 'birth', 'brave', 'brought', 'but', 'by', 'can', 'can', 'can', 'can', 'can', 'cause', 'civil', 'come', 'conceived', 'conceived', 'consecrate', 'consecrated', 'continent,', 'created', 'dead', 'dead', 'dead,', 'dedicate', 'dedicate', 'dedicated', 'dedicated', 'dedicated', 'dedicated,', 'detract.', 'devotion', 'devotion', 'did', 'died', 'do', 'earth.', 'endure.', 'engaged', 'equal.', 'far', 'far', 'fathers', 'field,', 'final', 'fitting', 'for', 'for', 'for', 'for', 'for', 'forget', 'forth', 'fought', 'freedom', 'from', 'from', 'full', 'gave', 'gave', 'government', 'great', 'great', 'great', 'ground.', 'hallow', 'have', 'have', 'have', 'have', 'have', 'here', 'here', 'here', 'here', 'here', 'here,', 'here,', 'here.', 'highly', 'honored', 'in', 'in', 'in', 'in', 'increased', 'is', 'is', 'is', 'it', 'it,', 'larger', 'last', 'little', 'live.', 'lives', 'living', 'living,', 'long', 'long', 'measure', 'men', 'men,', 'met', 'might', 'nation', 'nation', 'nation,', 'nation,', 'nation,', 'never', 'new', 'new', 'nobly', 'nor', 'not', 'not', 'not', 'not', 'not', 'note,', 'of', 'of', 'of', 'of', 'of', 'on', 'on', 'or', 'or', 'our', 'our', 'people,', 'people,', 'people,', 'perish', 'place', 'poor', 'portion', 'power', 'proper', 'proposition', 'rather', 'rather,', 'remaining', 'remember', 'resolve', 'resting', 'say', 'score', 'sense,', 'seven', 'shall', 'shall', 'shall', 'should', 'so', 'so', 'so', 'struggled', 'take', 'task', 'testing', 'that', 'that', 'that', 'that', 'that', 'that', 'that', 'that', 'that', 'that', 'that', 'that', 'that', 'the', 'the', 'the', 'the', 'the', 'the', 'the', 'the', 'the', 'their', 'these', 'these', 'they', 'they', 'they', 'this', 'this', 'this', 'this.', 'those', 'thus', 'to', 'to', 'to', 'to', 'to', 'to', 'to', 'to', 'under', 'unfinished', 'us', 'us', 'us', 'vain', 'war,', 'war.', 'we', 'we', 'we', 'we', 'we', 'we', 'we', 'we', 'what', 'what', 'whether', 'which', 'which', 'who', 'who', 'who', 'will', 'work', 'world', 'years']
+
+Unique word count
+
+    Write a program called unique_count_021.py that counts the unique words in lines of text read from stdin. Running the program against gettysburg.txt should produce the following output:
+
+    $ python3 unique_count_021.py < gettysburg.txt
+    143
+
+    Hints:
+
+        You will have to remove surrounding punctuation in the text. For example house and house. should not be counted as separate unique words. For this task you may find string.punctuation useful.
+
+        You will have to cater for upper and lower case versions of words. For example Four and four should not be counted as separate unique words.
+
+        Only alphanumeric tokens are to be counted as words. For example November and 19 are words but – is not.
+
+        Here is the sorted list of what my code considers a unique word:
+
+        ['1863', '19', 'a', 'above', 'abraham', 'add', 'advanced', 'ago', 'all', 'altogether', 'and', 'any', 'are', 'as', 'battle-field', 'be', 'before', 'birth', 'brave', 'brought', 'but', 'by', 'can', 'cause', 'civil', 'come', 'conceived', 'consecrate', 'consecrated', 'continent', 'created', 'dead', 'dedicate', 'dedicated', 'detract', 'devotion', 'did', 'died', 'do', 'earth', 'endure', 'engaged', 'equal', 'far', 'fathers', 'field', 'final', 'fitting', 'for', 'forget', 'forth', 'fought', 'four', 'freedom', 'from', 'full', 'gave', 'god', 'government', 'great', 'ground', 'hallow', 'have', 'here', 'highly', 'honored', 'in', 'increased', 'is', 'it', 'larger', 'last', 'liberty', 'lincoln', 'little', 'live', 'lives', 'living', 'long', 'measure', 'men', 'met', 'might', 'nation', 'never', 'new', 'nobly', 'nor', 'not', 'note', 'november', 'now', 'of', 'on', 'or', 'our', 'people', 'perish', 'place', 'poor', 'portion', 'power', 'proper', 'proposition', 'rather', 'remaining', 'remember', 'resolve', 'resting', 'say', 'score', 'sense', 'seven', 'shall', 'should', 'so', 'struggled', 'take', 'task', 'testing', 'that', 'the', 'their', 'these', 'they', 'this', 'those', 'thus', 'to', 'under', 'unfinished', 'us', 'vain', 'war', 'we', 'what', 'whether', 'which', 'who', 'will', 'work', 'world', 'years']
+
+Birthday
+
+    Write a program called birthday_021.py that reads in a person’s date of birth from the command line. A date of birth is specified by three integers: a day, a month and a year. The program should determine on which day of the week the person was born and print the corresponding line from the poem:
+    Monday’s child is fair of face
+    Tuesday’s child is full of grace
+    Wednesday’s child is full of woe
+    Thursday’s child has far to go
+    Friday’s child is loving and giving
+    Saturday’s child works hard for a living
+    Sunday’s child is fair and wise and good in every way
+
+    For example:
+
+    $ python3 birthday_021.py 1 3 1990
+    You were born on a Thursday and Thursday's child has far to go.
+
+    $ python3 birthday_021.py 12 10 1992
+    You were born on a Monday and Monday's child is fair of face.
+
+    $ python3 birthday_021.py 9 5 1995
+    You were born on a Tuesday and Tuesday's child is full of grace.
+
+    Hint: Import the calendar module. Use pydoc to look up the calendar.weekday() function. It will do the hard work for you.
+
+    Upload your code here to have it verified.
+
+Poker
+
+    Poker hands consists of five cards. They can be ranked from nothing all the way up to a royal flush:
+    Rank 	Name 	Description
+    9 	Royal flush 	{Ace, king, queen, jack, ten} + flush
+    8 	Straight flush 	Straight + flush
+    7 	Four of a kind 	Four equal ranks within five cards
+    6 	Full house 	Pair + different rank three of a kind
+    5 	Flush 	Five cards of same suit
+    4 	Straight 	Five cards sequentially ranked (no gaps)
+    3 	Three of a kind 	Three equal ranks within five cards
+    2 	Two pairs 	Two pairs of equal ranks within five cards
+    1 	One pair 	One pair of equal ranks within five cards
+    0 	Nothing 	 
+
+    In pokerhands.txt we have a (large) sample set of poker hands. Each line in the file looks something like this: 1,4,3,13,2,13,2,1,3,6,1.
+
+    The first ten digits should be read as five pairs of two. Each pair consists of a suit number followed by a rank. Suit numbers run from 1-4 where 1 is hearts, 2 is spades, 3 is diamonds, and 4 is clubs. Thus the above hand consists of the 4 of hearts, king of diamonds, king of spades, ace of spades and 6 of diamonds.
+
+    The final digit in each line is, for our purposes, the only one we care about. It represents this hand’s rank. Above it’s a 1 because this hand contains one pair (a pair of kings).
+
+    Write a program called poker_021.py that calculates the probability of each hand in the ranking table arising. We can estimate the probability of getting a particular hand by dividing the number of occurrences of that hand by the total number of hands. Hands are read from stdin. When run against pokerhands.txt your program should produce the following output (all percentages must be printed to four decimal places):
+
+    $ python3 poker_021.py < pokerhands.txt
+    The probability of nothing is 50.1209%
+    The probability of one pair is 42.2498%
+    The probability of two pairs is 4.7622%
+    The probability of three of a kind is 2.1121%
+    The probability of a straight is 0.3885%
+    The probability of a flush is 0.1996%
+    The probability of a full house is 0.1424%
+    The probability of four of a kind is 0.0230%
+    The probability of a straight flush is 0.0012%
+    The probability of a royal flush is 0.0003%
+
+    Hint: There are ten possible hands (0-9) and you will need a total for each. You will also need to total all the hands in the file. So calculate 11 totals and from them the above probabilities are easily derived.
+
+
+Exceptions
+
+    Without running it, write out the output of each of the following code snippets (run it afterwards to check your answer):
+
+    def callme01(x):
+        y = None
+        try:
+            y = 1/x
+        except ZeroDivisionError:
+            print('In exception handler')
+        else:
+            print('Reached end of try')
+        finally:
+            print('Exiting the function')
+        return y
+
+    print(callme01(1))
+    print(callme01(0))
+
+    def callme02(x):
+        try:
+            y = 1/x
+        except ZeroDivisionError:
+            print('In exception handler')
+        else:
+            print('Reached end of try')
+        finally:
+            print('Exiting the function')
+        return y
+
+    print(callme02(1))
+    print(callme02(0))
+
+    def callme03(x):
+        try:
+            y = 1/x
+            return y
+        except ZeroDivisionError:
+            print('In exception handler')
+        else:
+            print('Reached end of try')
+        finally:
+            print('Exiting the function')
+
+    print(callme03(1))
+    print(callme03(0))
+
+    def callme04(x):
+        try:
+            y = 1/x
+        except ValueError:
+            print('In exception handler')
+        else:
+            print('Reached end of try')
+        finally:
+            print('Exiting the function')
+        return y
+
+    print(callme04(1))
+    print(callme04(0))
+
+Best student version 1
+
+    Write a program called beststudent_v1_022.py that takes a filename as a single command line argument. The file contains a list of student marks where each line consists of a mark followed by a student name. The program should print out the name of the student who achieved the highest mark as well as the mark itself. Where there is a joint top mark the program should print the name associated with the first one encountered, for example:
+
+    $ cat students_022.txt
+    64 Mary Ryan
+    89 Michael Murphy
+    22 Pepe
+    78 Jenny Smith
+    57 Patrick James McMahon
+    89 John Kelly
+    22 Pepe
+    74 John C. Reilly
+
+    $ python3 beststudent_v1_022.py students_022.txt
+    Best student: Michael Murphy
+    Best mark: 89
+
+    If the filename specified on the command line cannot be opened the program must make appropriate use of exception handling to display an error message and exit gracefully. For example:
+
+    $ python3 beststudent_v1_022.py students_022.txtt
+    The file students_022.txtt could not be opened.
+
+Best student version 2
+
+    Extend the exception handling in the above program such that the program exits gracefully if any of the marks in the input file are not integers. Call the new program beststudent_v2_022.py. For example:
+
+    $ cat errors_022.txt
+    64 Mary Ryan
+    89 Michael Murphy
+    22 Pepe
+    78 Jenny Smith
+    5a Patrick James McMahon
+    89 John Kelly
+    22 Pepe
+    74 John C. Reilly
+    90 Penelope Pitstop
+
+    $ python3 beststudent_v2_022.py errors_022.txt
+    Invalid mark 5a encountered. Exiting.
+
+Best student version 3
+
+    Extend the exception handling in the above program such that rather than exiting on encountering a non-integer mark the program simply ignores it and continues to process all remaining marks. Call the new program beststudent_v3_022.py. For example:
+
+    $ cat errors_022.txt
+    64 Mary Ryan
+    89 Michael Murphy
+    22 Pepe
+    78 Jenny Smith
+    5a Patrick James McMahon
+    89 John Kelly
+    22 Pepe
+    74 John C. Reilly
+    90 Penelope Pitstop
+
+    $ python3 beststudent_v3_022.py errors_022.txt
+    Invalid mark 5a encountered. Skipping.
+    Best student: Penelope Pitstop
+    Best mark: 90
+
+Best students
+
+    The above programs print out a single name even when multiple students share the highest mark. Write a program called beststudents_022.py that prints out the names of all students who achieved the highest mark. Student names must be printed in the order in which they occur in the input file. For example:
+
+    $ cat students_022.txt
+    64 Mary Ryan
+    89 Michael Murphy
+    22 Pepe
+    78 Jenny Smith
+    57 Patrick James McMahon
+    89 John Kelly
+    22 Pepe
+    74 John C. Reilly
+
+    $ python3 beststudents_022.py students_022.txt
+    Best student(s): Michael Murphy, John Kelly
+    Best mark: 89
+
+
+Read a number
+
+    Write a Python program called readnum_022.py that keeps reading lines from stdin until one of them is a number. For each line that is not a number the program says so. As soon as the program reads a number it should say thank you and exit. Make sure you use exception handling to achieve the desired program behaviour. For example:
+
+    $ cat stdin.txt
+    a
+    B
+    (
+    ;
+    c
+    d
+    ;;;;
+    FF
+    number?
+    33
+    44
+    q
+    w
+    e
+
+    $ python3 readnum_022.py < stdin.txt
+    a is not a number
+    B is not a number
+    ( is not a number
+    ; is not a number
+    c is not a number
+    d is not a number
+    ;;;; is not a number
+    FF is not a number
+    number? is not a number
+    Thank you for 33

@@ -1,0 +1,629 @@
+
+Operator overloading: GAA score
+
+    In gaa_081.py define a Score class to model a GAA score. A score consists of a number of goals and points. When your class is correctly implemented, running the following program should produce the given output:
+
+    from gaa_081 import Score
+
+    def main():
+
+        # Create some instances of Score
+        s1 = Score()
+        s2 = Score(3, 12)
+        s3 = Score(4, 9)
+        s4 = Score(2, 11)
+        s5 = Score(1, 1)
+
+        # Display
+        print('Display...')
+        print(s1)
+        print(s2)
+        print(s3)
+        print(s4)
+
+        # Equality / inequality
+        print('Equality / inequality...')
+        print(s1 == s2)
+        print(s1 != s2)
+        print(s2 == s3)
+        print(s2 != s3)
+        print(s3 == s4)
+        print(s3 != s4)
+
+        # Greater than / less than
+        print('Greater than / less than...')
+        print(s1 > s2)
+        print(s2 < s3)
+
+        # Greater than or equal to / less than or equal to
+        print('Greater than or equal to / less than or equal to...')
+        print(s1 >= s2)
+        print(s2 >= s3)
+        print(s3 >= s2)
+        print(s2 >= s4)
+        print(s4 >= s2)
+        print(s1 <= s2)
+        print(s2 <= s3)
+        print(s3 <= s2)
+        print(s2 <= s4)
+        print(s4 <= s2)
+
+        # Addition
+        print('Addition...')
+        s6 = s3 + s4
+        print(s6)
+
+        # Subtraction
+        print('Subtraction...')    
+        s6 = s2 - s5
+        print(s6)
+
+        # In-place addition
+        print('In-place addition...')
+        s2alias = s2
+        s2 += s5
+        print(s2)
+        print(s2 > s5)
+        print(s2 == s2alias)
+
+        # In-place subtraction
+        print('In-place subtraction...')
+        s2 -= s5
+        print(s2)
+        print(s2 > s5)
+        print(s2 == s2alias)
+
+        # Sorting
+        print('Sorting...')    
+        for s in sorted([s1, s2, s3, s4, s5, s6], reverse=True):
+            print(s)
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 gaa_demo_081.py
+    Display...
+    0 goal(s) and 0 point(s)
+    3 goal(s) and 12 point(s)
+    4 goal(s) and 9 point(s)
+    2 goal(s) and 11 point(s)
+    Equality / inequality...
+    False
+    True
+    True
+    False
+    False
+    True
+    Greater than / less than...
+    False
+    False
+    Greater than or equal to / less than or equal to...
+    False
+    True
+    True
+    True
+    False
+    True
+    True
+    True
+    False
+    True
+    Addition...
+    6 goal(s) and 20 point(s)
+    Subtraction...
+    2 goal(s) and 11 point(s)
+    In-place addition...
+    4 goal(s) and 13 point(s)
+    True
+    True
+    In-place subtraction...
+    3 goal(s) and 12 point(s)
+    True
+    True
+    Sorting...
+    3 goal(s) and 12 point(s)
+    4 goal(s) and 9 point(s)
+    2 goal(s) and 11 point(s)
+    2 goal(s) and 11 point(s)
+    1 goal(s) and 1 point(s)
+    0 goal(s) and 0 point(s)
+
+    Hint: do not try to do all of this exercise in one go. Take a copy the code given above and comment out those parts that you have not yet implemented.
+
+Operator overloading: GAA score multiplication
+
+    In gaa_mult_081.py define a Score class to model a GAA score. (Simply copy over the code you used in gaa_081.py). Extend the class so it supports multiplication. When your class is correctly implemented, running the following program should produce the given output:
+
+    from gaa_mult_081 import Score
+
+    def main():
+
+        # Create some instances of Score
+        s1 = Score()
+        s2 = Score(3, 12)
+        s3 = Score(4, 9)
+        s4 = Score(2, 11)
+        s5 = Score(1, 1)
+
+        # Display
+        print('Display...')
+        print(s1)
+        print(s2)
+        print(s3)
+        print(s4)
+
+        # Multiplication
+        print('Multiplication...')
+        s2 = s2 * 2
+        print(s2)
+        print(s2 > s3)
+
+        # Right multiplication
+        print('Right multiplication...')
+        s2 = 2 * s2
+        print(s2)
+        print(s2 > s3)
+
+        # In-place multiplication
+        print('In-place multiplication...')
+        s2alias = s2
+        s2 *= 2
+        print(s2)
+        print(s2alias)
+        print(s2 == s2alias)
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 gaa_mult_demo_081.py
+    Display...
+    0 goal(s) and 0 point(s)
+    3 goal(s) and 12 point(s)
+    4 goal(s) and 9 point(s)
+    2 goal(s) and 11 point(s)
+    Multiplication...
+    6 goal(s) and 24 point(s)
+    True
+    Right multiplication...
+    12 goal(s) and 48 point(s)
+    True
+    In-place multiplication...
+    24 goal(s) and 96 point(s)
+    24 goal(s) and 96 point(s)
+    True
+
+    Hint: do not try to do all of this exercise in one go. Take a copy the code given above and comment out those parts that you have not yet implemented.
+
+Adding circles
+
+    In circle_081.py define a Point class to model a point in a two dimensional space. A point has two data attributes: x and y. For any new Point instance x and y default to zero. In addition to suitable __init__() and __str__() methods the Point class defines the following instance method:
+        midpoint() : returns an instance of Point that is the midpoint between this point and another point
+
+    In circle_081.py also define a Circle class to model a circle in a two dimensional space. A circle has two data attributes: radius (a floating point number) and centre (an instance of Point). For any new Circle instance the radius defaults to zero and its centre defaults to the Point (0,0). Define appropriate __init__() and __str__() methods.
+
+    It is possible to “add” circles. Adding two circles, A and B, produces a new circle whose centre is the midpoint between the centres of A and B and whose radius is the sum of the radii of A and B. Add the appropriate instance method to the Circle class to enforce this behaviour.
+
+    Once your classes are correctly implemented, running the following program should produce the given output:
+
+    from circle_081 import Point, Circle
+
+    def main():
+        p1 = Point()
+        p2 = Point(4, 6)
+        c1 = Circle(p1, 10)
+        c2 = Circle(p2, 5)
+        c3 = c1 + c2
+        print(c3)
+
+        p3 = Point(10, 10)
+        c4 = Circle(p3, 15)
+        c5 = c2 + c4
+        print(c5)
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 circle_demo_081.py
+    Centre: (2.0, 3.0)
+    Radius: 15
+    Centre: (7.0, 8.0)
+    Radius: 20
+
+Pass by compensation
+
+    DCU’s Marks and Standards defines the rules on whether a student passes, passes by compensation or fails at the end of the year. For compensation to apply all of the following criteria must be met:
+        A minimum precision mark of 45% has been obtained. (A precision mark is the weighted average mark for a student across all modules. The weighting of each module is proportional to the credits associated with that module i.e. a 10 credit module carries twice as much weight as a 5 credit module.)
+        A maximum of 1/6 of the credits for the academic year have been failed.
+        The marks obtained in the individual failed modules are 35%+.
+
+    Write a program called student_081.py that models a CA1 student. Once all results for the year have been submitted the program determines whether the student has passed, passed by compensation or failed. Below is a preliminary version of the program. Your task is to extend the provided code by implementing the add_mark(), precision_mark(), passed() and passed_by_compensation() methods:
+
+    from collections import namedtuple
+
+    Module = namedtuple('Module', 'code title ects')
+
+    CA1_MODULES = {'CA103': Module('CA103', 'Computer Systems', 5),
+                   'CA106': Module('CA106', 'Web Design', 5),
+                   'CA115': Module('CA115', 'Digital Innovation', 5),
+                   'CA116': Module('CA116', 'Computer Programming I', 10),
+                   'CA117': Module('CA117', 'Computer Programming II', 10),
+                   'CA169': Module('CA169', 'Networks and Internet', 5),
+                   'CA170': Module('CA170', 'Operating Systems', 5),
+                   'CA172': Module('CA172', 'Problem Solving', 5),
+                   'MS121': Module('MS121', 'IT Mathematics', 10)}
+
+    class Student(object):
+
+        def __init__(self, idnum, surname, firstname):
+            self.idnum = idnum
+            self.surname = surname
+            self.firstname = firstname
+            self.mods = CA1_MODULES
+            self.marks = {code: 0 for code in self.mods.keys()}
+
+        def __str__(self):
+            name = '{} : {} {}'.format(self.idnum,
+                                       self.firstname,
+                                       self.surname)
+            uline = '-' * len(name)
+            results =  '\n'.join(
+                [code + ' : ' + self.mods[code].title + ' : ' + str(
+                    self.marks[code]) for code in sorted(self.mods.keys())])
+
+            pm = 'Precision mark: {:.2f}'.format(self.precision_mark())
+            if self.passed():
+                outcome = 'Pass'
+            elif self.passed_by_compensation():
+                outcome = 'Pass by compensation'
+            else:
+                outcome = 'Fail'
+
+            return '\n'.join([name, uline, results, pm, outcome])
+
+        def add_mark():
+            pass
+
+        def precision_mark():
+            pass
+
+        def passed():
+            pass
+
+        def passed_by_compensation():
+            pass
+
+    Once your Student class is correctly implemented, running the following program should produce the given output:
+
+    from student_081 import Student
+
+    def main():
+
+        s1 = Student(15334499, 'Jones', 'Zoe')
+        s1.add_mark('CA103', 71)
+        s1.add_mark('CA106', 65)
+        s1.add_mark('CA115', 84)
+        s1.add_mark('CA116', 85)
+        s1.add_mark('CA117', 70)
+        s1.add_mark('CA169', 68)
+        s1.add_mark('CA170', 74)
+        s1.add_mark('CA172', 90)
+        s1.add_mark('MS121', 50)
+
+        s2 = Student(15667755, "Brent", "Tom")
+        s2.add_mark('CA103', 55)
+        s2.add_mark('CA106', 35)
+        s2.add_mark('CA115', 70)
+        s2.add_mark('CA116', 64)
+        s2.add_mark('CA117', 66)
+        s2.add_mark('CA169', 50)
+        s2.add_mark('CA170', 55)
+        s2.add_mark('CA172', 60)
+        s2.add_mark('MS121', 35)
+
+        s3 = Student(15112277, 'Brody', 'Joe')
+        s3.add_mark('CA103', 35)
+        s3.add_mark('CA106', 35)
+        s3.add_mark('CA115', 60)
+        s3.add_mark('CA116', 60)
+        s3.add_mark('CA117', 60)
+        s3.add_mark('CA169', 60)
+        s3.add_mark('CA170', 60)
+        s3.add_mark('CA172', 60)
+        s3.add_mark('MS121', 60)
+
+        print(s1)
+        print(s2)
+        print(s3)
+
+    if __name__ == '__main__':
+        main()
+
+    $ python student_demo_081.py
+    15334499 : Zoe Jones
+    --------------------
+    CA103 : Computer Systems : 71
+    CA106 : Web Design : 65
+    CA115 : Digital Innovation : 84
+    CA116 : Computer Programming I : 85
+    CA117 : Computer Programming II : 70
+    CA169 : Networks and Internet : 68
+    CA170 : Operating Systems : 74
+    CA172 : Problem Solving : 90
+    MS121 : IT Mathematics : 50
+    Precision mark: 71.83
+    Pass
+    15667755 : Tom Brent
+    --------------------
+    CA103 : Computer Systems : 55
+    CA106 : Web Design : 35
+    CA115 : Digital Innovation : 70
+    CA116 : Computer Programming I : 64
+    CA117 : Computer Programming II : 66
+    CA169 : Networks and Internet : 50
+    CA170 : Operating Systems : 55
+    CA172 : Problem Solving : 60
+    MS121 : IT Mathematics : 35
+    Precision mark: 54.58
+    Fail
+    15112277 : Joe Brody
+    --------------------
+    CA103 : Computer Systems : 35
+    CA106 : Web Design : 35
+    CA115 : Digital Innovation : 60
+    CA116 : Computer Programming I : 60
+    CA117 : Computer Programming II : 60
+    CA169 : Networks and Internet : 60
+    CA170 : Operating Systems : 60
+    CA172 : Problem Solving : 60
+    MS121 : IT Mathematics : 60
+    Precision mark: 55.83
+    Pass by compensation
+
+Time
+
+    In time_082.py define a Time class to model a 24-hour time as follows:
+    ../../_images/time_082.png
+
+    Each box consists of three compartments: class name, data attributes, methods. If a data attribute is underlined it is a class variable (otherwise it is an instance variable). If a method is underlined it is a class method (otherwise it is an instance method).
+
+    When your class is correctly implemented, running the following program should produce the given output:
+
+    from time_082 import Time
+
+    def main():
+
+        t1 = Time()
+        t2 = Time(9,35,16)
+        t3 = Time(0,0,4)
+        t4 = Time(9,35,16)
+
+        # Check string representation
+        print('Printing times...')
+        print(t1)
+        print(t2)
+        print(t3)
+
+        # Check equality
+        print('Checking equality...')
+        print(t2 == t4)
+        print(t1 == t3)
+
+        # Check greater than/less than
+        print('Checking greater than/less than...')
+        print(t2 > t3)
+        print(t2 < t3)
+        print(t4 > t1)
+        print(t4 < t1)
+
+        # Check addition
+        print('Checking addition...')
+        t5 = t2 + t2 + t2
+        print(t5)
+        print(t5 > t2)
+
+        # Check increment
+        print('Checking increment...')
+        t33 = t2
+        t2 += t2
+        t2 += t4
+        print(t2)
+        print(t33 is t2)
+        print(t2 > t3)
+        
+        # Check class method
+        print('Checking class method...')
+        t6 = Time.seconds_to_time(123456)
+        print(t6)
+        print(t6 > t1)
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 time_demo_082.py
+    Printing times...
+    The time is 00:00:00
+    The time is 09:35:16
+    The time is 00:00:04
+    Checking equality...
+    True
+    False
+    Checking greater than/less than...
+    True
+    False
+    True
+    False
+    Checking addition...
+    The time is 04:45:48
+    False
+    Checking increment...
+    The time is 04:45:48
+    True
+    True
+    Checking class method...
+    The time is 10:17:36
+    True
+
+Employee
+
+    In employee_082.py define an Employee class to model an employee as follows:
+    ../../_images/employee_082.png
+
+    Each box consists of three compartments: class name, data attributes, methods. If a data attribute is underlined it is a class variable (otherwise it is an instance variable). If a method is underlined it is a class method (otherwise it is an instance method).
+
+    When your class is correctly implemented, running the following program should produce the given output:
+
+    from employee_082 import Employee
+
+    def main():
+
+        # Check class attributes
+        print('Checking class attributes...')
+        print(Employee.next_employee_number)
+        
+        # Create two employees
+        e1 = Employee('Jimmy')
+        e2 = Employee('Mary', hours_worked=12, hourly_rate=12.40)
+
+        # Check string representation
+        print('Printing employees...')
+        print(e1)
+        print(e2)
+
+        # Check adding hours
+        print('Checking adding hours...')
+        e1.add_hours(10.5)
+        e2.add_hours(30)
+        print(e1)
+        print(e2)
+
+        # Check class attributes
+        print('Checking class attributes...')    
+        print(Employee.next_employee_number)
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 employee_demo_082.py
+    Checking class attributes...
+    0
+    Printing employees...
+    Name: Jimmy
+    ID: 0
+    Hours: 0.00
+    Rate: 9.25
+    Wages: 0.00
+    Name: Mary
+    ID: 1
+    Hours: 12.00
+    Rate: 12.40
+    Wages: 148.80
+    Checking adding hours...
+    Name: Jimmy
+    ID: 0
+    Hours: 10.50
+    Rate: 9.25
+    Wages: 97.12
+    Name: Mary
+    ID: 1
+    Hours: 42.00
+    Rate: 12.40
+    Wages: 520.80
+    Checking class attributes...
+    2
+
+Bank account
+
+    In bank_082.py define a BankAccount class to model a bank account as follows:
+    ../../_images/bank_082.png
+
+    Each box consists of three compartments: class name, data attributes, methods. If a data attribute is underlined it is a class variable (otherwise it is an instance variable). If a method is underlined it is a class method (otherwise it is an instance method).
+
+    When your class is correctly implemented, running the following program should produce the given output:
+
+    from bank_082 import BankAccount
+
+    def main():
+
+        # Check class attributes
+        print('Checking class attributes...')
+        print(BankAccount.next_account_number)
+        print(BankAccount.total_lodgements)
+        print(BankAccount.interest_rate)
+
+        # Create two accounts
+        b1 = BankAccount('Persephone', 'Murphy')
+        b2 = BankAccount('Jemima', 'O\'Reilly', 30)
+
+        # Check string representation
+        print('Printing bank accounts...')
+        print(b1)
+        print(b2)
+
+        # Check lodge
+        print('Checking lodgements...')
+        b1.lodge(100)
+        b2.lodge(100)
+        print(b1)
+        print(b2)
+
+        # Check increment
+        print('Checking increment...')
+        b3 = b1
+        b1 += 22
+        b2 += 23
+        print(b1)
+        print(b3 is b1)
+        print(b2)
+
+        # Check interest
+        b1.apply_interest()
+        b2.apply_interest()
+        print(b1)
+        print(b2)
+
+        # Check class attributes
+        print('Checking class attributes...')    
+        print(BankAccount.next_account_number)
+        print(BankAccount.total_lodgements)
+        print(BankAccount.interest_rate)
+
+    if __name__ == '__main__':
+        main()
+
+    $ python3 bank_demo_082.py
+    Checking class attributes...
+    16555232
+    0
+    0.043
+    Printing bank accounts...
+    Name: Persephone Murphy
+    Account number: 16555232
+    Balance: 0.00
+    Name: Jemima O'Reilly
+    Account number: 16555233
+    Balance: 30.00
+    Checking lodgements...
+    Name: Persephone Murphy
+    Account number: 16555232
+    Balance: 100.00
+    Name: Jemima O'Reilly
+    Account number: 16555233
+    Balance: 130.00
+    Checking increment...
+    Name: Persephone Murphy
+    Account number: 16555232
+    Balance: 122.00
+    True
+    Name: Jemima O'Reilly
+    Account number: 16555233
+    Balance: 153.00
+    Name: Persephone Murphy
+    Account number: 16555232
+    Balance: 127.25
+    Name: Jemima O'Reilly
+    Account number: 16555233
+    Balance: 159.58
+    Checking class attributes...
+    16555234
+    4
+    0.043

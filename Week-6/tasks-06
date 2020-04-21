@@ -1,0 +1,56 @@
+
+Perfect numbers
+
+    Write a function called sumFac() which takes an integer parameter n (assumed positive) and returns the sum of the factors of n. The factors of an integer n are the positive integers that exactly divide n, not including n itself. For example, the factors of 12 are 1, 2, 3, 4, and 6, and so the invocation sumFac(12) should return 16.
+
+    Write a boolean-valued function called isPerfect() which takes an integer parameter n (assumed positive) and determines whether or not n is perfect. A positive number is perfect if it is equal to the sum of its factors. For example 28 is perfect because its factors are 1, 2, 4, 7, and 14 and 28 = 1 + 2 + 4 + 7 + 14.
+
+    Write a program called perfect_062.py which reads a list of positive integers from stdin (one per line) and for each one prints True if it is a perfect number and False otherwise. (Obviously, you want to make good use of the two functions you developed above.) For example:
+
+    $ cat stdin.txt
+    1
+    12
+    33550336
+    10
+    28
+
+    $ python3 perfect_062.py < stdin.txt
+    False
+    False
+    True
+    False
+    True
+
+    Upload your code here to have it verified.
+
+The default mutable argument trap
+
+    Study the code below. Its behaviour is not as the programmer intended. Identify and explain the problem. Fix the code and call it mutable_062.py.
+
+    # Append l1 to l2. If l2 not supplied default to empty list.
+    def append2list(l1, l2=[]):
+        for i in l1:
+            l2.append(i)
+        return l2
+
+    def main():    
+        list1 = ['cat', 'dog']
+        nlist = append2list(list1)
+        # nlist should be ['cat', 'dog']
+        print(nlist)
+
+        list2 = ['lion']
+        nlist = append2list(list2, ['antelope'])
+        # nlist should be ['antelope', 'lion']
+        print(nlist)
+
+        list3 = ['fox', 'chicken']
+        nlist = append2list(list3)
+        # nlist should be ['fox', 'chicken']
+        print(nlist)
+
+    if __name__ == '__main__':
+        main()
+
+    Upload your code here to have it verified.
+
